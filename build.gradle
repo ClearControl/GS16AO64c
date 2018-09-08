@@ -1,0 +1,82 @@
+plugins {
+    id 'java'
+}
+apply plugin: 'idea'
+
+//***********************************************************************************
+// JAVA CODE BUILDING
+
+sourceSets
+{
+    main
+    {
+        java
+        { srcDir 'src/main/java' }
+        resources
+        { srcDir 'src/main/java' }
+    }
+    test
+    {
+        java
+        { srcDir 'src/test/java' }
+        resources
+        { srcDir 'src/test/java' }
+    }
+}
+
+//sourceCompatibility = 1.8
+//targetCompatibility = 1.8
+
+test {
+    useJUnitPlatform()
+
+    testLogging.showStandardStreams = true
+    testLogging
+            { events "passed", "skipped", "failed" }
+
+    exclude '**/demo/**'
+    exclude '**/run/**'
+
+    maxHeapSize = "4G"
+}
+
+dependencies {
+
+    // Coremem:
+    compile('net.clearcontrol:coremem:0.4.6')
+
+    // JNA:
+    compile(group: 'net.java.dev.jna',name: 'jna-platform', version: '4.5.1')
+
+    // JUnit:
+    compile group: 'org.junit.platform', name: 'junit-platform-commons', version: '1.2.0'
+    compile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.2.0'
+    compile group: 'org.junit.vintage', name: 'junit-vintage-engine', version: '5.2.0'
+}
+
+
+repositories {
+    maven {
+        url  "https://dl.bintray.com/clearcontrol/ClearControl"
+    }
+    jcenter()
+    mavenCentral()
+}
+
+//task sourcesJar(type: Jar, dependsOn:classes) {
+//    classifier = 'sources'
+//    from sourceSets.main.allSource
+//}
+//
+//task javadocJar(type: Jar, dependsOn:javadoc) {
+//    classifier = 'javadoc'
+//    from javadoc.destinationDir
+//}
+//
+//if (JavaVersion.current().isJava8Compatible()) {
+//    allprojects {
+//        tasks.withType(Javadoc) {
+//            options.addStringOption('Xdoclint:none', '-quiet')
+//        }
+//    }
+//}
