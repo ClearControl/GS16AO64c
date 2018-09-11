@@ -32,18 +32,18 @@ public class GSBuffer {
 
     private ContiguousBuffer buffer;
 
-    private Set<Integer> chansWritten;
     private Set<Integer> activeChans;
+    private HashMap<Integer, Integer> chanValues;
     private HashMap<Integer, Integer> TPtoPosMap;
     private int tpsWritten;
     private int valsWritten;
     private int maxSizeInBytes;
-
-//    private GSConstants c;
+    public double sampleRate = 0;
 
     /**
      * Constructor creates buffer by simple maxTP*maxChan calculation
      *       Buffer has a maximum capacity of 256k VALUES, values = 32 bit each
+     *
      * @param maxTP number of timepoints addressed
      * @param maxChan: maximum number of channels that will be addressed
      */
@@ -53,13 +53,14 @@ public class GSBuffer {
             throw new BoardInitializeException(
                     "GS DAC Board constants not Initialized.  Must construct a GSSequencer first");
         }
+
         maxSizeInBytes = maxTP * maxChan * 4;
         if ((maxSizeInBytes / 4) >= 256000) {
             throw new BufferTooLargeException(
-                    "Requested buffer too large.  Reduce tps or num chans");
-        } else if ((maxSizeInBytes / 4) >= 128000 && (maxSizeInBytes / 4) < 256000) {
+                    "Requested buffer too large.  maxTP * maxChan must be < 256000");
+        } else if ((maxSizeInBytes / 4) >= 192000 && (maxSizeInBytes / 4) < 256000) {
             throw new BufferTooLargeException(
-                    "Requested buffer too large: must be < 1/2 max capacity of 256k values");
+                    "Requested buffer too large: threshold set to < 3/4 max capacity of 256k values");
         } else {
             buffer = ContiguousBuffer.allocate(maxSizeInBytes);
         }
@@ -68,11 +69,13 @@ public class GSBuffer {
         // initialize trackers
         tpsWritten = 0;
         valsWritten = 0;
-        chansWritten = new HashSet<>();
         activeChans = new HashSet<>();
         activeChans.add(-1);
+        //maps timepoint to absolute memory position
         TPtoPosMap = new HashMap<>();
         TPtoPosMap.put(0,0);
+        //maps channel to most recent value
+        chanValues = new HashMap<>();
     }
 
     /**
@@ -110,7 +113,7 @@ public class GSBuffer {
      * @param chan integer
      * @throws ActiveChanException must follow channel writing rules
      */
-    public void appendValue(double voltage, int chan) throws ActiveChanException, VoltageRangeException
+    public boolean appendValue(double voltage, int chan) throws ActiveChanException, VoltageRangeException
     {
         if( (Collections.max(activeChans) > chan) )
         {
@@ -120,22 +123,37 @@ public class GSBuffer {
         {
             throw new ActiveChanException(
                     "Channel already active for current timepoint.  Replace or change Channel.");
-        } else if(chan < 0 || chan >=64){
+        } else if(chan < 0 || chan >=64)
+        {
             throw new ActiveChanException(
-                    "Channel must be between 0 and 64");
+                    "Channel must be 0 to 63");
         } else
         {
-            activeChans.add(chan);
-            chansWritten.add(chan);
+            int value;
+            try {
+                value = this.voltageToInt((float)voltage);
+            } catch (VoltageRangeException ex) {
+                throw ex;
+            }
+            //optimization: if channel already has this value written, do not write
+//            if(chanValues.containsKey(chan))
+//            {
+//                if(chanValues.get(chan) == value)
+//                {
+//                    return false;
+//                }
+//            } else {
+                int writevalue = (chan << GSConstants.id_off.intValue() | value);
+                buffer.writeInt(writevalue);
+                // push endpoint to stack
+                buffer.pushPosition();
+                valsWritten += 1;
+                activeChans.add(chan);
+                chanValues.put(chan, value);
+                return true;
+//            }
         }
-
-        int value;
-        try {value = voltageToInt((float)voltage);} catch (VoltageRangeException ex) {throw ex;}
-        int writevalue = (chan << GSConstants.id_off.intValue() | value);
-        buffer.writeInt(writevalue);
-        // push endpoint to stack
-        buffer.pushPosition();
-        valsWritten += 1;
+//        return false;
     }
 
     /**
@@ -227,12 +245,12 @@ public class GSBuffer {
     }
 
     /**
-     * Get all channels written in this memory block
-     * @return set of channels
+     * Get all channels and their most recently written value
+     * @return hashmap of <channel, last value>
      */
-    public TreeSet<Integer> getAllChannels()
+    public HashMap<Integer, Integer> getAllChannels()
     {
-        return new TreeSet<>(chansWritten);
+        return new HashMap<>(chanValues);
     }
 
     /**
@@ -285,7 +303,7 @@ public class GSBuffer {
     public HashMap<Integer, Short> getTPValues(int timepoint)
     {
         HashMap<Integer, Short> ChanValPair= new HashMap<>();
-        int channel, value, eof_eog, eof_flag, eog_flag;
+        int channel, value, eof_flag, eog_flag;
         buffer.pushPosition();
         int tpOffset1 = TPtoPosMap.get(timepoint);
         int tpOffset2 = TPtoPosMap.get(timepoint+1);
@@ -331,6 +349,11 @@ public class GSBuffer {
         return ChanValPair;
     }
 
+    public void setBufferSampleRate(double rate)
+    {
+        this.sampleRate = rate;
+    }
+
     /**
      * reset stack to beginning and clear it
      * reset all channel trackers
@@ -340,7 +363,7 @@ public class GSBuffer {
     {
         buffer.rewind();
         buffer.clearStack();
-        chansWritten = new HashSet<>();
+        chanValues = new HashMap<>();
         valsWritten = 0;
         tpsWritten = 0;
         activeChans = new HashSet<>();

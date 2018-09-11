@@ -1,6 +1,5 @@
 package GS.test;
 
-import GS.GSBuffer;
 import GSExceptions.ActiveChanException;
 import GSExceptions.BufferTooLargeException;
 import GSExceptions.FlagException;
@@ -11,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import GSConstants.GSConstants;
+import GS.GSBuffer;
 
 import java.util.HashMap;
 import java.util.TreeSet;
@@ -267,6 +267,24 @@ public class GSBufferTests {
         try {
             buffertest.appendValue(0,1);
         } catch(Exception ex) {System.out.println("same active channel pass");}
+
+    }
+
+    /**
+     * attempt to write same active channel twice
+     */
+    @Test
+    void GSBuffer_WriteChannel_OverFillBuffer()
+    {
+        try {
+            buffertest = new GSBuffer( 100, 2);
+        } catch (Exception ex) {fail(ex);}
+
+        try {
+            for(int i = 0; i < 1000; i++){
+                buffertest.appendValue(1,0);
+            }
+        } catch(Exception ex) {System.out.println("OverFill Buffer pass");}
 
     }
 
