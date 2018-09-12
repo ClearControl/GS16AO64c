@@ -2,9 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0f0af800-c3c1-4a16-9174-f8785757c7fb" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/resources/win32-x86-64/AO64_64b_Driver_C.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.9/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.9/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.9/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.9/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.9/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.9/taskHistory/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.9/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.9/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/GS16AO64c_main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/GS16AO64c_main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/GS16AO64c_test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/GS16AO64c_test.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GS/GSBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GS/GSBuffer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/GS/test/GSBufferTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/GS/test/GSBufferTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GS/GSSequencer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GS/GSSequencer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/win32-x86-64/AO64_64b_Driver_C.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/win32-x86-64/AO64_64b_Driver_C.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/GS/test/GSSequencerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/GS/test/GSSequencerTests.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -74,8 +85,8 @@
       <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
+            <state relative-caret-position="408">
+              <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -83,30 +94,20 @@
       <file leaf-file-name="GSBuffer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/GS/GSBuffer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1952">
+            <state relative-caret-position="141">
               <caret line="347" column="24" selection-start-line="347" selection-start-column="14" selection-end-line="347" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#8352#8353#0" expanded="true" />
-                <element signature="e#8400#8401#0" expanded="true" />
-                <element signature="e#8806#8807#0" expanded="true" />
-                <element signature="e#8839#8840#0" expanded="true" />
-                <element signature="e#11697#11698#0" expanded="true" />
-                <element signature="e#11735#11736#0" expanded="true" />
-                <element signature="e#12309#12310#0" expanded="true" />
-                <element signature="e#12360#12361#0" expanded="true" />
-                <element signature="e#12639#12640#0" expanded="true" />
-                <element signature="e#12697#12698#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GSBufferTests.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GSBufferTests.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/GS/test/GSBufferTests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
-              <caret line="367" column="33" lean-forward="true" selection-start-line="367" selection-start-column="33" selection-end-line="367" selection-end-column="33" />
+            <state relative-caret-position="5933">
+              <caret line="367" column="33" selection-start-line="367" selection-start-column="33" selection-end-line="367" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -117,30 +118,20 @@
       <file leaf-file-name="GSSequencer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/GS/GSSequencer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="535" selection-start-line="535" selection-end-line="535" />
+            <state relative-caret-position="439">
+              <caret line="127" column="57" lean-forward="true" selection-start-line="127" selection-start-column="57" selection-end-line="127" selection-end-column="57" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#13992#13993#0" expanded="true" />
-                <element signature="e#14079#14080#0" expanded="true" />
-                <element signature="e#14115#14116#0" expanded="true" />
-                <element signature="e#14203#14204#0" expanded="true" />
-                <element signature="e#15795#15796#0" expanded="true" />
-                <element signature="e#15887#15888#0" expanded="true" />
-                <element signature="e#21048#21049#0" expanded="true" />
-                <element signature="e#21135#21136#0" expanded="true" />
-                <element signature="e#21740#21741#0" expanded="true" />
-                <element signature="e#21777#21778#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GSSequencerTests.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GSSequencerTests.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/GS/test/GSSequencerTests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="231" column="36" lean-forward="true" selection-start-line="231" selection-start-column="36" selection-end-line="231" selection-end-column="36" />
+            <state relative-caret-position="170">
+              <caret line="106" column="95" selection-start-line="106" selection-start-column="95" selection-end-line="106" selection-end-column="95" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -174,7 +165,7 @@
   <component name="GradleLocalSettings">
     <option name="myGradleHomes">
       <map>
-        <entry key="$PROJECT_DIR$" value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9" />
+        <entry key="$PROJECT_DIR$" value="C:\Users\RoyerLab\.gradle\wrapper\dists\gradle-4.9-bin\e9cinqnqvph59rr7g70qubb4t\gradle-4.9" />
       </map>
     </option>
     <option name="myGradleVersions">
@@ -349,9 +340,9 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="6142759950000" />
+        <entry key="$PROJECT_DIR$" value="6147101323414" />
         <entry key="$PROJECT_DIR$/.gradle" value="0" />
-        <entry key="$PROJECT_DIR$/build.gradle" value="3861761674" />
+        <entry key="$PROJECT_DIR$/build.gradle" value="626048623" />
         <entry key="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" value="4171081951" />
         <entry key="$PROJECT_DIR$/settings.gradle" value="352344214" />
       </map>
@@ -375,82 +366,82 @@
               <option name="name" value="GS16AO64c" />
               <option name="projectBuildClasspath">
                 <list>
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-model-groovy-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-kotlin-dsl-tooling-models-0.18.4.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-resources-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-tooling-api-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-kotlin-dsl-0.18.4.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-core-api-4.9.jar" />
                   <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/ant-1.9.11.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-cli-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-docs-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-persistent-cache-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-build-option-4.9.jar" />
                   <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/ant-launcher-1.9.11.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-messaging-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/groovy-all-2.4.12.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-jvm-services-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-launcher-4.9.jar" />
                   <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-base-services-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-base-services-groovy-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-build-cache-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-build-option-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-cli-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-core-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-core-api-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-docs-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-installation-beacon-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-jvm-services-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-kotlin-dsl-0.18.4.jar" />
                   <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-kotlin-dsl-provider-plugins-0.18.4.jar" />
                   <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-kotlin-dsl-tooling-builders-0.18.4.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-model-core-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-core-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-installation-beacon-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-base-services-groovy-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-process-services-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-build-cache-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-runtime-api-info-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-native-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-kotlin-dsl-tooling-models-0.18.4.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-launcher-4.9.jar" />
                   <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-logging-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-messaging-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-model-core-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-model-groovy-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-native-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-persistent-cache-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-process-services-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-resources-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-runtime-api-info-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-tooling-api-4.9.jar" />
                   <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/gradle-wrapper-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-platform-jvm-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-testing-base-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-testing-jvm-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-build-init-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-maven-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-resources-sftp-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-signing-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-resources-s3-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-code-quality-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-test-kit-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-ivy-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-osgi-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-language-groovy-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-language-java-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/groovy-all-2.4.12.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-announce-4.9.jar" />
                   <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-antlr-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-reporting-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-platform-play-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-ide-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-resources-gcs-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-scala-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-resources-http-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-ear-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-publish-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-testing-junit-platform-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-build-cache-http-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-build-comparison-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-build-init-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-code-quality-4.9.jar" />
                   <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-composite-builds-4.9.jar" />
                   <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-dependency-management-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-testing-native-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-platform-base-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-language-jvm-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-plugin-development-4.9.jar" />
                   <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-diagnostics-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-ear-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-ide-4.9.jar" />
                   <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-ide-native-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-build-cache-http-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-workers-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-javascript-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-platform-native-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-jacoco-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-plugins-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-build-comparison-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-language-native-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-version-control-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-plugin-use-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-language-scala-4.9.jar" />
                   <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-ide-play-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/ivy-2.2.0.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-ivy-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-jacoco-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-javascript-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-language-groovy-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-language-java-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-language-jvm-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-language-native-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-language-scala-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-maven-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-osgi-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-platform-base-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-platform-jvm-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-platform-native-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-platform-play-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-plugin-development-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-plugin-use-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-plugins-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-publish-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-reporting-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-resources-gcs-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-resources-http-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-resources-s3-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-resources-sftp-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-scala-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-signing-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-test-kit-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-testing-base-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-testing-junit-platform-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-testing-jvm-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-testing-native-4.9.jar" />
                   <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-tooling-api-builders-4.9.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-announce-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-version-control-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/gradle-workers-4.9.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.9-bin/e9cinqnqvph59rr7g70qubb4t/gradle-4.9/lib/plugins/ivy-2.2.0.jar" />
                   <option value="$PROJECT_DIR$/buildSrc/src/main/java" />
                   <option value="$PROJECT_DIR$/buildSrc/src/main/groovy" />
                 </list>
@@ -471,19 +462,17 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/src/test/java/GS/test/GSSequencerTests.java" />
-        <option value="$PROJECT_DIR$/src/main/java/GS/GSSequencer.java" />
         <option value="$PROJECT_DIR$/src/test/java/GS/test/GSBufferTests.java" />
         <option value="$PROJECT_DIR$/src/main/java/GS/GSBuffer.java" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/src/main/java/GS/GSSequencer.java" />
+        <option value="$PROJECT_DIR$/src/test/java/GS/test/GSSequencerTests.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="x" value="-130" />
-    <option name="y" value="-1080" />
-    <option name="width" value="1920" />
-    <option name="height" value="1080" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="width" value="3866" />
+    <option name="height" value="2186" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -491,6 +480,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -502,6 +492,19 @@
               <item name="GS16AO64c" type="b2602c69:ProjectViewProjectNode" />
               <item name="GS16AO64c" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GS16AO64c" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GS16AO64c" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="GS16AO64c" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GS16AO64c" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="GS16AO64c" type="b2602c69:ProjectViewProjectNode" />
@@ -530,7 +533,6 @@
       </pane>
       <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -544,9 +546,17 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\RoyerLab\IdeaProjects\GS16AO64c\src\main\resources" />
+      <recent name="C:\Users\RoyerLab\IdeaProjects\GS16AO64c\src" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="GS.test" />
       <recent name="GSExceptions" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\RoyerLab\IdeaProjects\GS16AO64c\src\test\resources" />
+      <recent name="C:\Users\RoyerLab\IdeaProjects\GS16AO64c" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -561,7 +571,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.GSBufferTests (1)">
+  <component name="RunManager" selected="JUnit.GSSequencerTests.GSSequencer_testPreFillRange_largeSize">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
@@ -573,7 +583,7 @@
       <setting name="workDir" value="file://$PROJECT_DIR$" />
       <setting name="debug" value="false" />
     </configuration>
-    <configuration name="GSBufferTests (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GSSequencerTests.GSSequencer_testInitRange" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="GS16AO64c_test" />
       <extension name="coverage">
         <pattern>
@@ -584,9 +594,9 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="GS.test" />
-      <option name="MAIN_CLASS_NAME" value="GS.test.GSBufferTests" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="GS.test.GSSequencerTests" />
+      <option name="METHOD_NAME" value="GSSequencer_testInitRange" />
+      <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
@@ -596,30 +606,7 @@
       </option>
       <patterns />
     </configuration>
-    <configuration name="GSBufferTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="GS16AO64c_test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="GS.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="GS.test" />
-      <option name="MAIN_CLASS_NAME" value="GS.GSBufferTests" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration name="GSBufferTests.GSBuffer_MultipleTimePoints (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GSSequencerTests.GSSequencer_testInitialize" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="GS16AO64c_test" />
       <extension name="coverage">
         <pattern>
@@ -630,8 +617,8 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="GS.test" />
-      <option name="MAIN_CLASS_NAME" value="GS.test.GSBufferTests" />
-      <option name="METHOD_NAME" value="GSBuffer_MultipleTimePoints" />
+      <option name="MAIN_CLASS_NAME" value="GS.test.GSSequencerTests" />
+      <option name="METHOD_NAME" value="GSSequencer_testInitialize" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -642,19 +629,19 @@
       </option>
       <patterns />
     </configuration>
-    <configuration name="GSBufferTests.GSBuffer_MultipleTimePoints" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GSSequencerTests.GSSequencer_testPreFillRange_largeSize" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="GS16AO64c_test" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="GS.*" />
+          <option name="PATTERN" value="GS.test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="GS.test" />
-      <option name="MAIN_CLASS_NAME" value="GS.GSBufferTests" />
-      <option name="METHOD_NAME" value="GSBuffer_MultipleTimePoints" />
+      <option name="MAIN_CLASS_NAME" value="GS.test.GSSequencerTests" />
+      <option name="METHOD_NAME" value="GSSequencer_testPreFillRange_largeSize" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -665,19 +652,42 @@
       </option>
       <patterns />
     </configuration>
-    <configuration name="GSBufferTests.GSBuffer_getActiveChannels" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GSSequencerTests.GSSequencer_testPreFillRange_smallSize" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="GS16AO64c_test" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="GS.*" />
+          <option name="PATTERN" value="GS.test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="GS.test" />
-      <option name="MAIN_CLASS_NAME" value="GS.GSBufferTests" />
-      <option name="METHOD_NAME" value="GSBuffer_getActiveChannels" />
+      <option name="MAIN_CLASS_NAME" value="GS.test.GSSequencerTests" />
+      <option name="METHOD_NAME" value="GSSequencer_testPreFillRange_smallSize" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="GSSequencerTests.GSSequencer_testPreFillRange_standardSize" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="GS16AO64c_test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="GS.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="GS.test" />
+      <option name="MAIN_CLASS_NAME" value="GS.test.GSSequencerTests" />
+      <option name="METHOD_NAME" value="GSSequencer_testPreFillRange_standardSize" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -728,19 +738,19 @@
     </configuration>
     <list>
       <item itemvalue="Groovy.build (4)" />
-      <item itemvalue="JUnit.GSBufferTests" />
-      <item itemvalue="JUnit.GSBufferTests.GSBuffer_getActiveChannels" />
-      <item itemvalue="JUnit.GSBufferTests.GSBuffer_MultipleTimePoints" />
-      <item itemvalue="JUnit.GSBufferTests (1)" />
-      <item itemvalue="JUnit.GSBufferTests.GSBuffer_MultipleTimePoints (1)" />
+      <item itemvalue="JUnit.GSSequencerTests.GSSequencer_testInitialize" />
+      <item itemvalue="JUnit.GSSequencerTests.GSSequencer_testInitRange" />
+      <item itemvalue="JUnit.GSSequencerTests.GSSequencer_testPreFillRange_standardSize" />
+      <item itemvalue="JUnit.GSSequencerTests.GSSequencer_testPreFillRange_smallSize" />
+      <item itemvalue="JUnit.GSSequencerTests.GSSequencer_testPreFillRange_largeSize" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.GSBufferTests (1)" />
-        <item itemvalue="JUnit.GSBufferTests.GSBuffer_MultipleTimePoints (1)" />
-        <item itemvalue="JUnit.GSBufferTests.GSBuffer_MultipleTimePoints" />
-        <item itemvalue="JUnit.GSBufferTests" />
-        <item itemvalue="JUnit.GSBufferTests.GSBuffer_getActiveChannels" />
+        <item itemvalue="JUnit.GSSequencerTests.GSSequencer_testPreFillRange_largeSize" />
+        <item itemvalue="JUnit.GSSequencerTests.GSSequencer_testPreFillRange_smallSize" />
+        <item itemvalue="JUnit.GSSequencerTests.GSSequencer_testPreFillRange_standardSize" />
+        <item itemvalue="JUnit.GSSequencerTests.GSSequencer_testInitRange" />
+        <item itemvalue="JUnit.GSSequencerTests.GSSequencer_testInitialize" />
       </list>
     </recent_temporary>
   </component>
@@ -773,70 +783,70 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="GSBufferTests_GSBuffer_MultipleTimePoints_(1) - 2018.09.11 at 16h 51m 51s.xml">
-      <configuration name="GSBufferTests.GSBuffer_MultipleTimePoints (1)" configurationId="JUnit" />
+    <history-entry file="GSSequencerTests_GSSequencer_testInitRange - 2018.09.12 at 11h 19m 02s.xml">
+      <configuration name="GSSequencerTests.GSSequencer_testInitRange" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GSBufferTests_GSBuffer_MultipleTimePoints_(1) - 2018.09.11 at 21h 08m 39s.xml">
-      <configuration name="GSBufferTests.GSBuffer_MultipleTimePoints (1)" configurationId="JUnit" />
+    <history-entry file="GSSequencerTests_GSSequencer_testInitRange - 2018.09.12 at 11h 21m 14s.xml">
+      <configuration name="GSSequencerTests.GSSequencer_testInitRange" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GSBufferTests_GSBuffer_MultipleTimePoints_(1) - 2018.09.11 at 21h 10m 59s.xml">
-      <configuration name="GSBufferTests.GSBuffer_MultipleTimePoints (1)" configurationId="JUnit" />
+    <history-entry file="GSSequencerTests_GSSequencer_testPreFillRange_standardSize - 2018.09.12 at 11h 21m 23s.xml">
+      <configuration name="GSSequencerTests.GSSequencer_testPreFillRange_standardSize" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GSBufferTests_GSBuffer_MultipleTimePoints_(1) - 2018.09.11 at 22h 12m 30s.xml">
-      <configuration name="GSBufferTests.GSBuffer_MultipleTimePoints (1)" configurationId="JUnit" />
+    <history-entry file="GSSequencerTests_GSSequencer_testPreFillRange_smallSize - 2018.09.12 at 11h 21m 30s.xml">
+      <configuration name="GSSequencerTests.GSSequencer_testPreFillRange_smallSize" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GSBufferTests_GSBuffer_MultipleTimePoints_(1) - 2018.09.11 at 22h 13m 10s.xml">
-      <configuration name="GSBufferTests.GSBuffer_MultipleTimePoints (1)" configurationId="JUnit" />
+    <history-entry file="GSSequencerTests_GSSequencer_testPreFillRange_largeSize - 2018.09.12 at 11h 22m 23s.xml">
+      <configuration name="GSSequencerTests.GSSequencer_testPreFillRange_largeSize" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GSBufferTests_GSBuffer_MultipleTimePoints_(1) - 2018.09.11 at 22h 19m 19s.xml">
-      <configuration name="GSBufferTests.GSBuffer_MultipleTimePoints (1)" configurationId="JUnit" />
+    <history-entry file="GSSequencerTests_GSSequencer_testPreFillRange_largeSize - 2018.09.12 at 11h 22m 43s.xml">
+      <configuration name="GSSequencerTests.GSSequencer_testPreFillRange_largeSize" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GSBufferTests_GSBuffer_MultipleTimePoints_(1) - 2018.09.11 at 22h 21m 52s.xml">
-      <configuration name="GSBufferTests.GSBuffer_MultipleTimePoints (1)" configurationId="JUnit" />
+    <history-entry file="GSSequencerTests_GSSequencer_testPreFillRange_largeSize - 2018.09.12 at 11h 23m 12s.xml">
+      <configuration name="GSSequencerTests.GSSequencer_testPreFillRange_largeSize" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GSBufferTests_GSBuffer_MultipleTimePoints_(1) - 2018.09.11 at 22h 27m 04s.xml">
-      <configuration name="GSBufferTests.GSBuffer_MultipleTimePoints (1)" configurationId="JUnit" />
+    <history-entry file="GSSequencerTests_GSSequencer_testPreFillRange_largeSize - 2018.09.12 at 11h 23m 37s.xml">
+      <configuration name="GSSequencerTests.GSSequencer_testPreFillRange_largeSize" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GSBufferTests_GSBuffer_MultipleTimePoints_(1) - 2018.09.11 at 22h 27m 58s.xml">
-      <configuration name="GSBufferTests.GSBuffer_MultipleTimePoints (1)" configurationId="JUnit" />
+    <history-entry file="GSSequencerTests_GSSequencer_testPreFillRange_largeSize - 2018.09.12 at 11h 24m 24s.xml">
+      <configuration name="GSSequencerTests.GSSequencer_testPreFillRange_largeSize" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GSBufferTests_GSBuffer_MultipleTimePoints_(1) - 2018.09.11 at 22h 29m 55s.xml">
-      <configuration name="GSBufferTests.GSBuffer_MultipleTimePoints (1)" configurationId="JUnit" />
+    <history-entry file="GSSequencerTests_GSSequencer_testPreFillRange_largeSize - 2018.09.12 at 11h 32m 14s.xml">
+      <configuration name="GSSequencerTests.GSSequencer_testPreFillRange_largeSize" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-130" y="-1080" width="1920" height="1080" extended-state="0" />
+    <frame x="-7" y="-7" width="2575" height="1415" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.1802444" />
-      <window_info anchor="right" id="sbt" order="3" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.17834395" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.22505091" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.37261146" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1517572" />
-      <window_info anchor="bottom" id="sbt-shell-toolwindow" order="7" />
-      <window_info id="Learn" order="2" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15467197" />
+      <window_info anchor="bottom" id="Build" order="7" weight="0.21337579" />
       <window_info anchor="right" id="Gradle" order="3" weight="0.34824282" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.39968154" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3299389" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Build" order="7" visible="true" weight="0.21384929" />
+      <window_info id="Learn" order="2" />
+      <window_info anchor="bottom" id="sbt-shell-toolwindow" order="7" />
+      <window_info anchor="right" id="sbt" order="3" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
@@ -851,10 +861,136 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/GS/test/GSSequencerTests.java</url>
+          <line>134</line>
+          <properties />
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/GS/test/GSSequencerTests.java</url>
+          <line>136</line>
+          <properties />
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/GS/GSSequencer.java</url>
+          <line>117</line>
+          <properties />
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/GS/GSSequencer.java</url>
+          <line>115</line>
+          <properties />
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/GS/GSSequencer.java</url>
+          <line>127</line>
+          <properties />
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="15" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GS/GSBuffer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5899">
+          <caret line="347" column="24" selection-start-line="347" selection-start-column="14" selection-end-line="347" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GS/GSSequencer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8704">
+          <caret line="535" selection-start-line="535" selection-end-line="535" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/GS/test/GSSequencerTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3757">
+          <caret line="231" column="36" selection-start-line="231" selection-start-column="36" selection-end-line="231" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/GS/test/GSBufferTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6018">
+          <caret line="367" column="33" selection-start-line="367" selection-start-column="33" selection-end-line="367" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GS/GSBuffer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5712">
+          <caret line="347" column="24" selection-start-line="347" selection-start-column="14" selection-end-line="347" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GS/GSSequencer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8704">
+          <caret line="535" selection-start-line="535" selection-end-line="535" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/GS/test/GSSequencerTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3757">
+          <caret line="231" column="36" lean-forward="true" selection-start-line="231" selection-start-column="36" selection-end-line="231" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/GS/test/GSBufferTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6018">
+          <caret line="367" column="33" lean-forward="true" selection-start-line="367" selection-start-column="33" selection-end-line="367" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="825">
@@ -917,34 +1053,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.coremem/coremem/0.4.5/ebe71b8169ca90207f81755d2857d18044637c03/coremem-0.4.5-sources.jar!/coremem/interop/BridJInterop.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.coremem/coremem/0.4.5/ebe71b8169ca90207f81755d2857d18044637c03/coremem-0.4.5-sources.jar!/coremem/interop/JNAInterop.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.coremem/coremem/0.4.5/ebe71b8169ca90207f81755d2857d18044637c03/coremem-0.4.5-sources.jar!/coremem/buffers/ContiguousBuffer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1425">
-          <caret line="95" column="43" selection-start-line="95" selection-start-column="35" selection-end-line="95" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.coremem/coremem/0.4.5/ebe71b8169ca90207f81755d2857d18044637c03/coremem-0.4.5-sources.jar!/coremem/ContiguousMemoryInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="57" lean-forward="true" selection-start-line="28" selection-start-column="57" selection-end-line="28" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.coremem/coremem/0.4.5/ebe71b8169ca90207f81755d2857d18044637c03/coremem-0.4.5-sources.jar!/coremem/interop/BridJInterop.java" />
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.coremem/coremem/0.4.5/ebe71b8169ca90207f81755d2857d18044637c03/coremem-0.4.5-sources.jar!/coremem/interop/JNAInterop.java" />
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.coremem/coremem/0.4.5/ebe71b8169ca90207f81755d2857d18044637c03/coremem-0.4.5-sources.jar!/coremem/buffers/ContiguousBuffer.java" />
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.coremem/coremem/0.4.5/ebe71b8169ca90207f81755d2857d18044637c03/coremem-0.4.5-sources.jar!/coremem/ContiguousMemoryInterface.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/GSExceptions/ActiveChanException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -952,10 +1064,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Desktop/GSSequencerTests.java">
+    <entry file="file://$USER_HOME$/Desktop/GSSequencerTests.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/GS/GSBuffer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        <state relative-caret-position="141">
+          <caret line="347" column="24" selection-start-line="347" selection-start-column="14" selection-end-line="347" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -964,15 +1077,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
+        <state relative-caret-position="408">
+          <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/GS/test/GSSequencerTests.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/GS/test/GSBufferTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="231" column="36" lean-forward="true" selection-start-line="231" selection-start-column="36" selection-end-line="231" selection-end-column="36" />
+        <state relative-caret-position="5933">
+          <caret line="367" column="33" selection-start-line="367" selection-start-column="33" selection-end-line="367" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -981,48 +1094,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/GS/GSSequencer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="535" selection-start-line="535" selection-end-line="535" />
+        <state relative-caret-position="439">
+          <caret line="127" column="57" lean-forward="true" selection-start-line="127" selection-start-column="57" selection-end-line="127" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#13992#13993#0" expanded="true" />
-            <element signature="e#14079#14080#0" expanded="true" />
-            <element signature="e#14115#14116#0" expanded="true" />
-            <element signature="e#14203#14204#0" expanded="true" />
-            <element signature="e#15795#15796#0" expanded="true" />
-            <element signature="e#15887#15888#0" expanded="true" />
-            <element signature="e#21048#21049#0" expanded="true" />
-            <element signature="e#21135#21136#0" expanded="true" />
-            <element signature="e#21740#21741#0" expanded="true" />
-            <element signature="e#21777#21778#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GS/GSBuffer.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/GS/test/GSSequencerTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1952">
-          <caret line="347" column="24" selection-start-line="347" selection-start-column="14" selection-end-line="347" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#8352#8353#0" expanded="true" />
-            <element signature="e#8400#8401#0" expanded="true" />
-            <element signature="e#8806#8807#0" expanded="true" />
-            <element signature="e#8839#8840#0" expanded="true" />
-            <element signature="e#11697#11698#0" expanded="true" />
-            <element signature="e#11735#11736#0" expanded="true" />
-            <element signature="e#12309#12310#0" expanded="true" />
-            <element signature="e#12360#12361#0" expanded="true" />
-            <element signature="e#12639#12640#0" expanded="true" />
-            <element signature="e#12697#12698#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/GS/test/GSBufferTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="367" column="33" lean-forward="true" selection-start-line="367" selection-start-column="33" selection-end-line="367" selection-end-column="33" />
+        <state relative-caret-position="170">
+          <caret line="106" column="95" selection-start-line="106" selection-start-column="95" selection-end-line="106" selection-end-column="95" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

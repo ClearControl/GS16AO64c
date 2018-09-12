@@ -64,7 +64,7 @@ public class GSSequencer {
     public GSSequencer(int num_threshold_values, int sample_rate, boolean runAutoCal, boolean twosComplement) throws InvalidBoardParamsException
     {
         target_thresh_values = num_threshold_values;
-        if(target_thresh_values < 0 || target_thresh_values > 256000 || sample_rate > 500000 || sample_rate < 1){
+        if(target_thresh_values <= 0 || target_thresh_values > 256000 || sample_rate > 500000 || sample_rate < 1){
             throw new InvalidBoardParamsException(
                     "Threshold value out of range, or Sample rate out of range");
         }
@@ -208,6 +208,7 @@ public class GSSequencer {
      * DMA initialization method to fill buffer before clock is started
      *      Continually writes next BufferArray entry if DMAbuffer is below threshold
      *      If DMABuffer will overflow, or if BufferArrray is empty, will exit loop and allow operation
+     *      !!! should we manually flip the threshold trigger bit if there is overflow at prefill event??? !!!!
      * @param buffer Entire ArrayDeque of GSBuffers
      */
     private void prefillBuffer(ArrayDeque<GSBuffer> buffer)

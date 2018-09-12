@@ -16,6 +16,7 @@ public class GSSequencerTests {
 
     private GSBuffer bufferTest1;
     private GSBuffer bufferTest2;
+    private GSBuffer bufferTest2a;
     private GSBuffer bufferTest3;
 
     private GSSequencer sequencerTest;
@@ -94,7 +95,7 @@ public class GSSequencerTests {
 
         if(sequencerTest.play(arrayData, 1))
         {
-            System.out.println("Successful write even with too few values to trigger thresh");
+            System.out.println("Successful write even with too few values to trigger threshold");
         } else{
             fail("unsuccessful catch of prefill buffer when very few values written");
         }
@@ -103,14 +104,17 @@ public class GSSequencerTests {
     /**
      * because we set the GSBuffer max size to 50% the capacity of the DMA buffer,
      *  we must keep the num_threshold_values under 50% for proper operation
+     *  This test writes 2 values to fill to 191999, then tries to write 3rd value to overflow.
      */
     @Test
     void GSSequencer_testPreFillRange_largeSize()
     {
         try {
             sequencerTest = new GSSequencer(192000, 40000);
-            bufferTest1 = new GSBuffer(4096, 16);
-            bufferTest2 = new GSBuffer(7999, 16);
+            bufferTest1 = new GSBuffer(4096, 16);   // 25% buffers
+            bufferTest2 = new GSBuffer(8192, 16);   // 50% buffers
+            bufferTest2a = new GSBuffer(8191, 16);   // 50%-1 buffers
+            bufferTest3 = new GSBuffer(12288, 16);   // 75% buffers
         } catch (Exception ex) {
             fail(ex);
         }
@@ -122,7 +126,7 @@ public class GSSequencerTests {
 
         for (int i = 0; i < 10; i++) {
             arrayData.push(bufferTest1);
-            arrayData.push(bufferTest1);
+            arrayData.push(bufferTest2a);
             arrayData.push(bufferTest2);
         }
 
