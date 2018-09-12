@@ -356,33 +356,33 @@ public class GSBufferTests {
             buffertest = new GSBuffer( 2000, 5);
         } catch (Exception ex) {fail(ex);}
 
-        for(int tp=0; tp<1000; tp++)
-        {
-            for(int chan=0; chan < 5; chan++)
-            {
-                if( tp%2 == 0) {
+        try {
+            for (int loop = 0; loop < 100; loop++) {
+                if (loop % 2 == 0) {
                     try {
-                        double voltage = 0.1 * chan;
-                        buffertest.appendValue(voltage, chan);
-                    } catch (Exception ex) {fail(ex);}
+                        for (int i = 0; i < 10; i++) {
+                            buffertest.appendValue(0.1*i, i);
+                        }
+                        buffertest.appendEndofTP();
+                    } catch (Exception ex) {
+                        fail(ex);
+                    }
                 } else {
                     try {
-                        double voltage = -0.1*chan;
-                        buffertest.appendValue(voltage, chan);
-                    } catch (Exception ex) {fail(ex);}
+                        for (int i = 0; i < 10; i++) {
+                            buffertest.appendValue(-0.1*i, i);
+                        }
+                        buffertest.appendEndofTP();
+                    } catch (Exception ex) {
+                        fail(ex);
+                    }
                 }
             }
-            try{buffertest.appendEndofTP();} catch(Exception ex) {fail(ex);}
-        }
-        try{buffertest.appendEndofFunction();} catch(Exception ex) {fail(ex);}
+            buffertest.appendEndofFunction();
 
-        // check negatives, EOG and EOF flags
-        HashMap<Integer, Short> tpMap = buffertest.getTPValues(999);
-        assertEquals((short)(-0.1*0*(Math.pow(2,15))), (short)tpMap.get(0));
-        assertEquals((short)(-0.1*1*(Math.pow(2,15))), (short)tpMap.get(1));
-        assertEquals((short)(-0.1*2*(Math.pow(2,15))), (short)tpMap.get(2));
-        assertEquals((short)(-0.1*3*(Math.pow(2,15))), (short)tpMap.get(3));
-        assertEquals((short)(-0.1*4*(Math.pow(2,15))), (short)tpMap.get(4));
+        } catch (Exception ex) {
+            fail(ex);
+        }
 
         // check positives, EOG flag
         HashMap<Integer, Short> tpMap2 = buffertest.getTPValues(0);
@@ -392,9 +392,18 @@ public class GSBufferTests {
         assertEquals((short)(0.1*3*(Math.pow(2,15)-1)), (short)tpMap2.get(3));
         assertEquals((short)(0.1*4*(Math.pow(2,15)-1)), (short)tpMap2.get(4));
 
+        // check negatives, EOG and EOF flags
+        HashMap<Integer, Short> tpMap = buffertest.getTPValues(1);
+        assertEquals((short)(-0.1*1*(Math.pow(2,15))), (short)tpMap.get(1));
+        assertEquals((short)(-0.1*2*(Math.pow(2,15))), (short)tpMap.get(2));
+        assertEquals((short)(-0.1*3*(Math.pow(2,15))), (short)tpMap.get(3));
+        assertEquals((short)(-0.1*4*(Math.pow(2,15))), (short)tpMap.get(4));
+        assertEquals((short)(-0.1*5*(Math.pow(2,15))), (short)tpMap.get(5));
+
+        try{
+            assertEquals((short)(-0.1*0*(Math.pow(2,15))), (short)tpMap.get(0));
+        } catch (NullPointerException ex) {System.out.println("Caught repeat zeroth channel write");}
+
     }
-
-
-
 
 }

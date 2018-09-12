@@ -135,25 +135,27 @@ public class GSBuffer {
             } catch (VoltageRangeException ex) {
                 throw ex;
             }
+
             //optimization: if channel already has this value written, do not write
-//            if(chanValues.containsKey(chan))
-//            {
-//                if(chanValues.get(chan) == value)
-//                {
-//                    return false;
-//                }
-//            } else {
-                int writevalue = (chan << GSConstants.id_off.intValue() | value);
-                buffer.writeInt(writevalue);
-                // push endpoint to stack
-                buffer.pushPosition();
-                valsWritten += 1;
-                activeChans.add(chan);
-                chanValues.put(chan, value);
-                return true;
-//            }
+            if(chanValues.containsKey(chan))
+            {
+                if(chanValues.get(chan) == value)
+                {
+                    println("chan contains key = " +chanValues.get(chan));
+                    return false;
+                }
+            }
+
+            int writevalue = (chan << GSConstants.id_off.intValue() | value);
+            buffer.writeInt(writevalue);
+            println(Integer.toString(writevalue));
+            // push endpoint to stack
+            buffer.pushPosition();
+            valsWritten += 1;
+            activeChans.add(chan);
+            chanValues.put(chan, value);
+            return true;
         }
-//        return false;
     }
 
     /**
@@ -180,6 +182,7 @@ public class GSBuffer {
         buffer.pushPosition();
         buffer.writeInt(writeValue);
         buffer.pushPosition();
+        println("appending end of timepoint with = "+writeValue);
 
         // marks end of TP.  Register next TP in hashmap
         tpsWritten += 1;
@@ -378,6 +381,14 @@ public class GSBuffer {
     public ContiguousMemoryInterface getMemory()
     {
         return buffer.getContiguousMemory();
+    }
+
+    /**
+     * for debugging
+     * @param writing_to_outputs_now comment out during run
+     */
+    private void println(String writing_to_outputs_now) {
+        //System.out.println(writing_to_outputs_now);
     }
 
 }
