@@ -14,6 +14,7 @@ import GSConstants.GSConstants;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.charset.Charset;
+import java.sql.Driver;
 import java.util.ArrayDeque;
 
 /**
@@ -46,22 +47,22 @@ public class GSSequencer {
      *  3) Initialize
      *  4) Autocalibrate only ONCE per day or computer restart.
      */
-    public GSSequencer(int num_threshold_values) throws InvalidBoardParamsException
+    public GSSequencer(int num_threshold_values) throws InvalidBoardParamsException, DriverBindingsException
     {
         this(num_threshold_values, 400000,false, true);
     }
 
-    public GSSequencer(int num_threshold_values, int sample_rate) throws InvalidBoardParamsException
+    public GSSequencer(int num_threshold_values, int sample_rate) throws InvalidBoardParamsException, DriverBindingsException
     {
         this(num_threshold_values,sample_rate,false, true);
     }
 
-    public GSSequencer(int num_threshold_values, int sample_rate, boolean runAutoCal) throws InvalidBoardParamsException
+    public GSSequencer(int num_threshold_values, int sample_rate, boolean runAutoCal) throws InvalidBoardParamsException, DriverBindingsException
     {
         this(num_threshold_values,sample_rate,runAutoCal, true);
     }
 
-    public GSSequencer(int num_threshold_values, int sample_rate, boolean runAutoCal, boolean twosComplement) throws InvalidBoardParamsException
+    public GSSequencer(int num_threshold_values, int sample_rate, boolean runAutoCal, boolean twosComplement) throws InvalidBoardParamsException, DriverBindingsException
     {
         target_thresh_values = num_threshold_values;
         if(target_thresh_values <= 0 || target_thresh_values > 256000 || sample_rate > 500000 || sample_rate < 1){
@@ -72,7 +73,13 @@ public class GSSequencer {
             throw new InvalidBoardParamsException("Sample rate too high.  Unpredictable behavior close to 500ksps");
         }
 
-        INSTANCE = AO64_64b_Driver_CLibrary.INSTANCE;
+        try {
+            INSTANCE = AO64_64b_Driver_CLibrary.INSTANCE;
+        } catch (NoClassDefFoundError cdef) {
+            throw new DriverBindingsException("Could not initialize class bindings.AO64_64b_Driver_CLibrary");
+        } catch (UnsatisfiedLinkError lnk) {
+            throw new DriverBindingsException("Unsatisfied Link Error, driver not installed");
+        }
 
         GSConstants.ulBdNum = new NativeLong(1);
         GSConstants.ulError = new NativeLongByReference();
