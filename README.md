@@ -2,7 +2,7 @@
 
 Final version of module to control 64 channel DAC card from General Standards (model 16AO64c)
 
-This module consists of two methods:
+This module consists of two classes:
 
 ### GSBuffer
 	- Uses coremem to allocate memory.
