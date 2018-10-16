@@ -14,7 +14,6 @@ import GSConstants.GSConstants;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.charset.Charset;
-import java.sql.Driver;
 import java.util.ArrayDeque;
 
 /**
@@ -62,6 +61,7 @@ public class GSSequencer {
         this(num_threshold_values,sample_rate,runAutoCal, true);
     }
 
+    //TODO: Does this have to be a singleton?  Do we want to allow mutliple instances?
     public GSSequencer(int num_threshold_values, int sample_rate, boolean runAutoCal, boolean twosComplement) throws InvalidBoardParamsException, DriverBindingsException
     {
         target_thresh_values = num_threshold_values;
@@ -567,6 +567,21 @@ public class GSSequencer {
         return sequencerEmpty;
     }
 
+
+    /**
+     * to be called at end of operation.
+     */
+    public void close() {
+        resetOutputsToZero();
+        stopInterruptNotification();
+        setDisableInterrupt();
+        stopClock();
+        closeDMAChannel();
+        closeHandle();
+    }
+
+
+    //TODO: investigate if this is the right way to customize a destructor
     /**
      * when this class object is dereferenced, finalize will reset board values
      */
@@ -580,5 +595,7 @@ public class GSSequencer {
         closeDMAChannel();
         closeHandle();
     }
+
+
 
 }

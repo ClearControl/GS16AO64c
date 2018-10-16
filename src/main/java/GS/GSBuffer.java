@@ -316,6 +316,8 @@ public class GSBuffer {
         {
             value = buffer.readInt();
 
+
+            // TODO: figure out this If/else structure
             if(value<0)
             {
                 channel = (value >>> GSConstants.id_off.intValue());
