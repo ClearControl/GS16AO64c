@@ -316,19 +316,9 @@ public class GSBuffer {
         {
             value = buffer.readInt();
 
-
-            // TODO: figure out this If/else structure
-            if(value<0)
-            {
-                channel = (value >>> GSConstants.id_off.intValue());
-                eof_flag = (value >>> GSConstants.eof.intValue());
-                eog_flag = (value >>> GSConstants.eog.intValue());
-            } else
-            {
-                channel = (value >>> GSConstants.id_off.intValue());
-                eof_flag = (value >>> GSConstants.eof.intValue());
-                eog_flag = (value >>> GSConstants.eog.intValue());
-            }
+            channel = (value >>> GSConstants.id_off.intValue());
+            eof_flag = (value >>> GSConstants.eof.intValue());
+            eog_flag = (value >>> GSConstants.eog.intValue());
 
             // remove EOF, EOG and channel bits from int value
             if(eof_flag == 1)
