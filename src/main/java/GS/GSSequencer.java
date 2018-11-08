@@ -61,7 +61,6 @@ public class GSSequencer {
         this(num_threshold_values,sample_rate,runAutoCal, true);
     }
 
-    //TODO: Does this have to be a singleton?  Do we want to allow mutliple instances?
     public GSSequencer(int num_threshold_values, int sample_rate, boolean runAutoCal, boolean twosComplement) throws InvalidBoardParamsException, DriverBindingsException
     {
         target_thresh_values = num_threshold_values;
