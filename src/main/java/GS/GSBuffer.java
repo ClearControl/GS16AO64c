@@ -32,7 +32,7 @@ public class GSBuffer {
 
     private ContiguousBuffer buffer;
 
-    private Set<Integer> activeChans;
+    private SortedSet<Integer> activeChans;
     private HashMap<Integer, Integer> chanValues;
     private HashMap<Integer, Integer> TPtoPosMap;
     private int tpsWritten;
@@ -58,7 +58,7 @@ public class GSBuffer {
         if ((maxSizeInBytes / 4) >= 256000) {
             throw new BufferTooLargeException(
                     "Requested buffer too large.  maxTP * maxChan must be < 256000");
-        } else if ((maxSizeInBytes / 4) >= 192000 && (maxSizeInBytes / 4) < 256000) {
+        } else if ((maxSizeInBytes / 4) >= 192000) {
             throw new BufferTooLargeException(
                     "Requested buffer too large: threshold set to < 3/4 max capacity of 256k values");
         } else {
@@ -69,7 +69,7 @@ public class GSBuffer {
         // initialize trackers
         tpsWritten = 0;
         valsWritten = 0;
-        activeChans = new HashSet<>();
+        activeChans = new TreeSet<>();
         activeChans.add(-1);
         //maps timepoint to absolute memory position
         TPtoPosMap = new HashMap<>();
@@ -115,7 +115,7 @@ public class GSBuffer {
      */
     public boolean appendValue(double voltage, int chan) throws ActiveChanException, VoltageRangeException
     {
-        if( (Collections.max(activeChans) > chan) )
+        if( (activeChans.last() > chan) )
         {
             throw new ActiveChanException(
                     "Higher channel exists.  Must write in increasing channel order");
@@ -141,14 +141,14 @@ public class GSBuffer {
             {
                 if(chanValues.get(chan) == value)
                 {
-                    println("chan contains key = " +chanValues.get(chan));
+                    System.out.println("chan contains key = " +chanValues.get(chan));
                     return false;
                 }
             }
 
             int writevalue = (chan << GSConstants.id_off.intValue() | value);
             buffer.writeInt(writevalue);
-            println(Integer.toString(writevalue));
+            System.out.println(Integer.toString(writevalue));
             // push endpoint to stack
             buffer.pushPosition();
             valsWritten += 1;
@@ -182,7 +182,7 @@ public class GSBuffer {
         buffer.pushPosition();
         buffer.writeInt(writeValue);
         buffer.pushPosition();
-        println("appending end of timepoint with = "+writeValue);
+        System.out.println("appending end of timepoint with = "+writeValue);
 
         // marks end of TP.  Register next TP in hashmap
         tpsWritten += 1;
@@ -371,7 +371,7 @@ public class GSBuffer {
         chanValues = new HashMap<>();
         valsWritten = 0;
         tpsWritten = 0;
-        activeChans = new HashSet<>();
+        activeChans = new TreeSet<>();
         TPtoPosMap = new HashMap<>();
         buffer.fillBytes((byte)0);
     }
@@ -383,14 +383,6 @@ public class GSBuffer {
     public ContiguousMemoryInterface getMemory()
     {
         return buffer.getContiguousMemory();
-    }
-
-    /**
-     * for debugging
-     * @param writing_to_outputs_now comment out during run
-     */
-    private void println(String writing_to_outputs_now) {
-        //System.out.println(writing_to_outputs_now);
     }
 
 }

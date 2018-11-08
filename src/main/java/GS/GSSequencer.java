@@ -124,14 +124,14 @@ public class GSSequencer {
 
         startClock();
 
-        println("writing to outputs now");
+        System.out.println("writing to outputs now");
         while(!data.isEmpty())
         {
             EventStatus.setValue(Kernel32.INSTANCE.WaitForSingleObject(myHandle, wait_for_trigger_milliseconds));
-            println("buffer size before switch = "+ getLongRegister(GSConstants.BUFFER_SIZE).toString());
+            System.out.println("buffer size before switch = "+ getLongRegister(GSConstants.BUFFER_SIZE).toString());
             switch(EventStatus.intValue()) {
                 case 0x00://wait_object_0, object is signaled;
-                    println(" object signaled ... writing to outputs");
+                    System.out.println(" object signaled ... writing to outputs");
                     if( !checkDMAOverflow(data.peek()) ){
                         //check buffer sample rate.
                         if (data.peek().sampleRate != 0){
@@ -142,13 +142,13 @@ public class GSSequencer {
                     }
                     break;
                 case 0x80://wait abandoned;
-                    println(" Error ... Wait abandoned");
+                    System.out.println(" Error ... Wait abandoned");
                     break;
                 case 0x102://wait timeout.  object stat is non signaled
-                    println(" Error ... Wait timeout");
+                    System.out.println(" Error ... Wait timeout");
                     break;
                 case 0xFFFFFFFF:// wait failed.  Function failed.  call GetLastError for extended info.
-                    println(" Error ... Wait failed");
+                    System.out.println(" Error ... Wait failed");
                     break;
             }
             sequencerEmpty += 1;
@@ -184,8 +184,8 @@ public class GSSequencer {
             //int targetTHRSHLD = getLongRegister(GSConstants.BUFFER_THRSHLD).intValue();
             int targetTHRSHLD = this.target_thresh_values;
             int currentSize = getLongRegister(GSConstants.BUFFER_SIZE).intValue();
-            println("   targetThsld = "+targetTHRSHLD);
-            println("   currentSize = "+currentSize);
+            System.out.println("   targetThsld = "+targetTHRSHLD);
+            System.out.println("   currentSize = "+currentSize);
             // True = Threshold satisfied, False = still under threshold
             return(currentSize > targetTHRSHLD);
         } else {
@@ -205,8 +205,8 @@ public class GSSequencer {
 
         int nextBufferSize = nextBufferEntry.getValsWritten();
         int currentSize = getLongRegister(GSConstants.BUFFER_SIZE).intValue();
-        println("   nextBuff = "+nextBufferSize);
-        println("   currentSize = "+currentSize);
+        System.out.println("   nextBuff = "+nextBufferSize);
+        System.out.println("   currentSize = "+currentSize);
         // true=WILL overflow, false=WILL NOT overflow
         return(currentSize + nextBufferSize > 256000);
     }
@@ -222,12 +222,12 @@ public class GSSequencer {
     {
         try{
             do {
-                println("\n");
+                System.out.println("\n");
                 boolean checkThresh = checkDMAThreshSatisfied();
                 boolean dmaOverflow = checkDMAOverflow(buffer.peek());
-                println("start do loop checkThresh = "+checkThresh);
-                println("DMA Overflow = "+checkDMAOverflow(buffer.peek()));
-                println("buffer is empty = "+buffer.isEmpty());
+                System.out.println("start do loop checkThresh = "+checkThresh);
+                System.out.println("DMA Overflow = "+checkDMAOverflow(buffer.peek()));
+                System.out.println("buffer is empty = "+buffer.isEmpty());
                 if (!checkThresh && !dmaOverflow && buffer.isEmpty()) {
                     // under thresh, will not overflow, no more values to write
                     System.out.println("WARNING: not enough values to trigger threshold");
@@ -244,7 +244,7 @@ public class GSSequencer {
                     continue;
                 }
                 checkThresh = checkDMAThreshSatisfied();
-                println("end do loop checkThresh = "+checkThresh);
+                System.out.println("end do loop checkThresh = "+checkThresh);
             } while (!checkDMAThreshSatisfied());
 
         } catch (Exception ex) {System.out.println(ex);}
@@ -452,10 +452,10 @@ public class GSSequencer {
             GSConstants.ReadValue[i] = new NativeLong( (i << GSConstants.id_off.intValue()) | (1 << GSConstants.eog.intValue()) | 0x8000 );
         }
 
-        println("numChan : ... : " + GSConstants.numChan);
-        println("id_off: ..... : " + GSConstants.id_off);
-        println("eog : ....... : " + GSConstants.eog);
-        println("eof : ....... : " + GSConstants.eof);
+        System.out.println("numChan : ... : " + GSConstants.numChan);
+        System.out.println("id_off: ..... : " + GSConstants.id_off);
+        System.out.println("eog : ....... : " + GSConstants.eog);
+        System.out.println("eof : ....... : " + GSConstants.eof);
     }
 
     /**
@@ -555,10 +555,6 @@ public class GSSequencer {
         INSTANCE.AO64_66_Write_Local32(GSConstants.ulBdNum, GSConstants.ulError, register, value);
     }
 
-    private void println(String writing_to_outputs_now) {
-        //System.out.println(writing_to_outputs_now);
-    }
-
     /**
      *
      * @return number of times sequencer has emptied during play
@@ -579,23 +575,5 @@ public class GSSequencer {
         closeDMAChannel();
         closeHandle();
     }
-
-
-    //TODO: investigate if this is the right way to customize a destructor
-    /**
-     * when this class object is dereferenced, finalize will reset board values
-     */
-    @Override
-    public void finalize()
-    {
-        resetOutputsToZero();
-        stopInterruptNotification();
-        setDisableInterrupt();
-        stopClock();
-        closeDMAChannel();
-        closeHandle();
-    }
-
-
 
 }
