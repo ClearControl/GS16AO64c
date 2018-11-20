@@ -33,7 +33,7 @@ public class GSBuffer {
     private ContiguousBuffer buffer;
 
     private SortedSet<Integer> activeChans;
-    private HashMap<Integer, Integer> chanValues;
+    private Integer[] chanValues;
     private HashMap<Integer, Integer> TPtoPosMap;
     private int tpsWritten;
     private int valsWritten;
@@ -70,12 +70,11 @@ public class GSBuffer {
         tpsWritten = 0;
         valsWritten = 0;
         activeChans = new TreeSet<>();
-        activeChans.add(-1);
         //maps timepoint to absolute memory position
         TPtoPosMap = new HashMap<>();
         TPtoPosMap.put(0,0);
         //maps channel to most recent value
-        chanValues = new HashMap<>();
+        chanValues = new Integer[65];
     }
 
     /**
@@ -85,7 +84,7 @@ public class GSBuffer {
      * @return scaled voltage recast as short.
      * @throws VoltageRangeException value is less than 1 or greater than 1
      */
-    private int voltageToInt(float voltage) throws VoltageRangeException
+    private int voltageToInt(double voltage) throws VoltageRangeException
     {
         int scaledVoltage;
         if(voltage < -1 || voltage > 1)
@@ -115,14 +114,17 @@ public class GSBuffer {
      */
     public boolean appendValue(double voltage, int chan) throws ActiveChanException, VoltageRangeException
     {
-        if( (activeChans.last() > chan) )
+        //optimization: if channel already has this value written, do not write
+        if(chanValues[chan] == (Integer)this.voltageToInt(voltage))
+        {
+            System.out.println("chan contains key = " +chanValues[chan]);
+            return false;
+        }
+
+        if( !activeChans.isEmpty() && (activeChans.last() >= chan) )
         {
             throw new ActiveChanException(
                     "Higher channel exists.  Must write in increasing channel order");
-        } else if(activeChans.contains(chan))
-        {
-            throw new ActiveChanException(
-                    "Channel already active for current timepoint.  Replace or change Channel.");
         } else if(chan < 0 || chan >=64)
         {
             throw new ActiveChanException(
@@ -131,19 +133,9 @@ public class GSBuffer {
         {
             int value;
             try {
-                value = this.voltageToInt((float)voltage);
+                value = this.voltageToInt(voltage);
             } catch (VoltageRangeException ex) {
                 throw ex;
-            }
-
-            //optimization: if channel already has this value written, do not write
-            if(chanValues.containsKey(chan))
-            {
-                if(chanValues.get(chan) == value)
-                {
-                    System.out.println("chan contains key = " +chanValues.get(chan));
-                    return false;
-                }
             }
 
             int writevalue = (chan << GSConstants.id_off.intValue() | value);
@@ -153,7 +145,7 @@ public class GSBuffer {
             buffer.pushPosition();
             valsWritten += 1;
             activeChans.add(chan);
-            chanValues.put(chan, value);
+            chanValues[chan] =  value;
             return true;
         }
     }
@@ -251,9 +243,9 @@ public class GSBuffer {
      * Get all channels and their most recently written value
      * @return hashmap of <channel, last value>
      */
-    public HashMap<Integer, Integer> getAllChannels()
+    public Integer[] getAllChannels()
     {
-        return new HashMap<>(chanValues);
+        return chanValues;
     }
 
     /**
@@ -358,7 +350,7 @@ public class GSBuffer {
     {
         buffer.rewind();
         buffer.clearStack();
-        chanValues = new HashMap<>();
+        chanValues = new Integer[65];
         valsWritten = 0;
         tpsWritten = 0;
         activeChans = new TreeSet<>();
