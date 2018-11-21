@@ -88,13 +88,7 @@ public class GSBufferTests {
             buffertest = new GSBuffer( 2000, 64);
         } catch (Exception ex) {fail(ex);}
 
-        try {
-            buffertest.appendValue(-10,1);
-        } catch(ActiveChanException ACex) {
-            fail(ACex);
-        } catch(VoltageRangeException VRex){
-            System.out.println("voltage limit low pass");
-        }
+        assertThrows(VoltageRangeException.class, () -> buffertest.appendValue(-10,1));
     }
 
     /**
@@ -107,13 +101,7 @@ public class GSBufferTests {
             buffertest = new GSBuffer( 2000, 64);
         } catch (Exception ex) {fail(ex);}
 
-        try {
-            buffertest.appendValue(10,1);
-        } catch(ActiveChanException ACex) {
-            fail(ACex);
-        } catch(VoltageRangeException VRex){
-            System.out.println("voltage limit high pass");
-        }
+        assertThrows(VoltageRangeException.class, () -> buffertest.appendValue(10,1));
     }
 
     /**
@@ -179,9 +167,8 @@ public class GSBufferTests {
             buffertest.appendEndofTP();
         } catch (Exception ex) {fail(ex);}
 
-        try {
-            buffertest.appendEndofTP();
-        } catch(FlagException ex) {System.out.println("EOG 2x write pass");}
+        assertThrows(FlagException.class, () -> buffertest.appendEndofTP());
+        System.out.println("EOG 2x write pass");
     }
 
 
@@ -264,10 +251,8 @@ public class GSBufferTests {
             buffertest.appendValue(1,1);
         } catch (Exception ex) {fail(ex);}
 
-        try {
-            buffertest.appendValue(0,1);
-        } catch(Exception ex) {System.out.println("same active channel pass");}
-
+        assertThrows(Exception.class, () -> buffertest.appendValue(0,1));
+        System.out.println("same active channel pass");
     }
 
     /**
@@ -280,11 +265,13 @@ public class GSBufferTests {
             buffertest = new GSBuffer( 100, 2);
         } catch (Exception ex) {fail(ex);}
 
-        try {
+
+        assertThrows(Exception.class, () -> {
             for(int i = 0; i < 1000; i++){
                 buffertest.appendValue(1,0);
             }
-        } catch(Exception ex) {System.out.println("OverFill Buffer pass");}
+        });
+        System.out.println("OverFill Buffer pass");
 
     }
 
@@ -298,14 +285,11 @@ public class GSBufferTests {
             buffertest = new GSBuffer( 2000, 64);
         } catch (Exception ex) {fail(ex);}
 
-        try {
-            buffertest.appendValue(1,65);
-        } catch(Exception ex) {System.out.println("active channel positive range pass");}
+        assertThrows(Exception.class, () -> buffertest.appendValue(1,65));
+        System.out.println("active channel positive range pass");
 
-        try {
-            buffertest.appendValue(1,-10);
-        } catch(Exception ex) {System.out.println("active channel negative range pass");}
-
+        assertThrows(Exception.class, ()->  buffertest.appendValue(1,-10));
+        System.out.println("active channel negative range pass");
     }
 
     /**
