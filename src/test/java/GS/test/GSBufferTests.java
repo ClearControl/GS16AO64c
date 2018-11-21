@@ -89,6 +89,7 @@ public class GSBufferTests {
         } catch (Exception ex) {fail(ex);}
 
         assertThrows(VoltageRangeException.class, () -> buffertest.appendValue(-10,1));
+        System.out.println("voltage limit low pass");
     }
 
     /**
@@ -102,6 +103,7 @@ public class GSBufferTests {
         } catch (Exception ex) {fail(ex);}
 
         assertThrows(VoltageRangeException.class, () -> buffertest.appendValue(10,1));
+        System.out.println("voltage limit high pass");
     }
 
     /**
