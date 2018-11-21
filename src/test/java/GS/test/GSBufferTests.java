@@ -296,7 +296,7 @@ public class GSBufferTests {
      * attempt to write not in increasing order
      */
     @Test
-    void GSBuffer_WriteChannel_order() // TODO: rewrite this test
+    void GSBuffer_WriteChannel_order()
     {
         try {
             buffertest = new GSBuffer( 2000, 64);
@@ -305,6 +305,7 @@ public class GSBufferTests {
         } catch (Exception ex) {fail(ex);}
 
         assertThrows(ActiveChanException.class, () -> buffertest.appendValue(1,2));
+        System.out.println("active channel out of order pass");
     }
 
     /**
