@@ -1,7 +1,21 @@
+buildscript {
+	dependencies {
+		classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4"
+	}
+}
+
+
 plugins {
+    id "com.jfrog.bintray" version "1.8.3"
+    id "com.diffplug.gradle.spotless" version "3.1.0"
+    id "de.undercouch.download" version "3.4.3"
     id 'java'
 }
 apply plugin: 'idea'
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+
 
 //***********************************************************************************
 // JAVA CODE BUILDING
@@ -59,8 +73,46 @@ repositories {
     maven {
         url  "https://dl.bintray.com/clearcontrol/ClearControl"
     }
+    maven {
+        url "http://oss.sonatype.org/content/groups/public"
+    }
     jcenter()
     mavenCentral()
+    mavenLocal()
+}
+
+// PUBLISHING
+archivesBaseName = 'GS16AO64c'
+group = 'net.clearcontrol'
+version = '0.0.1'
+description = 'General Standards 64 channel signal generator'
+
+publishing {
+    publications {
+        MyPublication(MavenPublication) {
+            from components.java
+        }
+    }
+}
+
+bintray {
+    user = property('bintray_user')
+    key = property('bintray_key')
+    publications = ['MyPublication']
+    publish = true
+    pkg {
+        repo = 'gsrepo'
+        name = 'GS16AO64c'
+	licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/ClearControl/GS16AO64c.git'
+        labels = ['ClearControl', 'GS16AO64c']
+        publicDownloadNumbers = true
+	version {
+		name = project.version
+            	desc = project.description
+            	released  = new Date()
+	}
+    }
 }
 
 //task sourcesJar(type: Jar, dependsOn:classes) {
