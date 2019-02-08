@@ -20,6 +20,13 @@ apply plugin: 'maven-publish'
 //***********************************************************************************
 // JAVA CODE BUILDING
 
+processResources {
+    from ('src/main/java') {
+        include '**/*.lib'
+        include '**/*.dll'
+    }
+}
+
 sourceSets
 {
     main
@@ -38,8 +45,8 @@ sourceSets
     }
 }
 
-//sourceCompatibility = 1.8
-//targetCompatibility = 1.8
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 test {
     useJUnitPlatform()
@@ -84,7 +91,7 @@ repositories {
 // PUBLISHING
 archivesBaseName = 'GS16AO64c'
 group = 'net.clearcontrol'
-version = '0.0.1'
+version = '0.0.2'
 description = 'General Standards 64 channel signal generator'
 
 publishing {
