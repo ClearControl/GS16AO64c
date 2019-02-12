@@ -48,7 +48,7 @@ public class GSBuffer {
      */
     public GSBuffer(int maxTP, int maxChan) throws BufferTooLargeException, BoardInitializeException {
 
-        if(Constants.id_off == null || Constants.eog == null || Constants.eof == null) {
+        if(GSConstants.id_off == null || GSConstants.eog == null || GSConstants.eof == null) {
             throw new BoardInitializeException(
                     "gsao64 DAC Board constants not Initialized.  Must construct a GSSequencer first");
         }
@@ -137,7 +137,7 @@ public class GSBuffer {
                 throw ex;
             }
 
-            int writevalue = (chan << Constants.id_off.intValue() | value);
+            int writevalue = (chan << GSConstants.id_off.intValue() | value);
             buffer.writeInt(writevalue);
             System.out.println(Integer.toString(writevalue));
             // push endpoint to stack
@@ -161,12 +161,12 @@ public class GSBuffer {
 
         int value = buffer.readInt();
 
-        if (value >>> Constants.eog.intValue() == 1)
+        if (value >>> GSConstants.eog.intValue() == 1)
         {
             throw new FlagException(
                     "end of timepoint flag already exists!");
         }
-        int writeValue = ( (1 << Constants.eog.intValue()) | value);
+        int writeValue = ( (1 << GSConstants.eog.intValue()) | value);
 
         // do not use 'appendValue'
         buffer.popPosition();
@@ -194,14 +194,14 @@ public class GSBuffer {
 
         int value = buffer.readInt();
 
-        if ( (value >>> Constants.eof.intValue()) == 1) {
+        if ( (value >>> GSConstants.eof.intValue()) == 1) {
             throw new FlagException(
                     "end of function flag already exists!");
-        } else if ( value >>> Constants.eog.intValue() != 1) {
+        } else if ( value >>> GSConstants.eog.intValue() != 1) {
             throw new FlagException(
                     "must tag end of TP before end of buffer");
         }
-        int newValue = (1 << Constants.eof.intValue() | value);
+        int newValue = (1 << GSConstants.eof.intValue() | value);
 
         // do not use 'appendValue'
         buffer.popPosition();
@@ -307,25 +307,25 @@ public class GSBuffer {
         {
             value = buffer.readInt();
 
-            channel = (value >>> Constants.id_off.intValue());
-            eof_flag = (value >>> Constants.eof.intValue());
-            eog_flag = (value >>> Constants.eog.intValue());
+            channel = (value >>> GSConstants.id_off.intValue());
+            eof_flag = (value >>> GSConstants.eof.intValue());
+            eog_flag = (value >>> GSConstants.eog.intValue());
 
             // remove EOF, EOG and channel bits from int value
             if(eof_flag == 1)
             {
                 channel &= ~192;    // turn eof AND eog flag off
-                value &= ~(192 << Constants.id_off.intValue());
-                value &= ~(channel << Constants.id_off.intValue());
+                value &= ~(192 << GSConstants.id_off.intValue());
+                value &= ~(channel << GSConstants.id_off.intValue());
             }
             else if(eog_flag == 1)
             {
                 channel &= ~64;     // turn eog flag off
-                value &= ~(64 << Constants.id_off.intValue());
-                value &= ~(channel << Constants.id_off.intValue());
+                value &= ~(64 << GSConstants.id_off.intValue());
+                value &= ~(channel << GSConstants.id_off.intValue());
             } else
             {
-                value &= ~(channel << Constants.id_off.intValue());
+                value &= ~(channel << GSConstants.id_off.intValue());
             }
             //System.out.println("channel = "+channel);
             //System.out.println("value = "+(short)value);

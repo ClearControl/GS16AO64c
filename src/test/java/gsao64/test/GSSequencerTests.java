@@ -1,6 +1,6 @@
 package gsao64.test;
 
-import gsao64.Constants;
+import gsao64.GSConstants;
 import gsao64.exceptions.DriverBindingsException;
 import gsao64.exceptions.InvalidBoardParamsException;
 import org.junit.jupiter.api.Test;
@@ -11,9 +11,14 @@ import static org.junit.jupiter.api.Assertions.fail;
 import gsao64.GSBuffer;
 import gsao64.GSSequencer;
 
+import java.nio.file.Paths;
 import java.util.ArrayDeque;
 
 public class GSSequencerTests {
+
+    static {
+        System.load(Paths.get("src/main/resources/win32-x86-64/AO64_64b_Driver_C.dll").toAbsolutePath().toString());
+    }
 
     private GSBuffer bufferTest1;
     private GSBuffer bufferTest2;
@@ -22,7 +27,7 @@ public class GSSequencerTests {
     private GSSequencer sequencerTest;
 
     //initialize constant values without initializing board
-    private Constants constants = new Constants();
+    private GSConstants lGSConstants = new GSConstants();
 
     private ArrayDeque<GSBuffer> arrayData;
 

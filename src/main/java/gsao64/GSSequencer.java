@@ -10,12 +10,10 @@ import com.sun.jna.platform.win32.WinDef.DWORD;
 import com.sun.jna.platform.win32.WinNT.HANDLE;
 import com.sun.jna.ptr.NativeLongByReference;
 
-import java.io.File;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.charset.Charset;
 import java.util.ArrayDeque;
-// import coremem.util.ResourceHandler;
 
 /**
  * for continuous function, this is the order of operations:
@@ -25,18 +23,6 @@ import java.util.ArrayDeque;
  * 4)
  */
 public class GSSequencer {
-
-/*    static {
-        try {
-            ResourceHandler lResourceHandler = new ResourceHandler();
-            File f = lResourceHandler.
-            f.deleteOnExit();
-
-            System.load(f.getAbsolutePath());
-        } catch (Throwable e) {
-            e.printStackTrace();
-        }
-    }*/
 
     private static AO64_64b_Driver_CLibrary INSTANCE;
 
@@ -93,8 +79,8 @@ public class GSSequencer {
             throw new DriverBindingsException("Unsatisfied Link Error, driver not installed");
         }
 
-        Constants.ulBdNum = new NativeLong(1);
-        Constants.ulError = new NativeLongByReference();
+        GSConstants.ulBdNum = new NativeLong(1);
+        GSConstants.ulError = new NativeLongByReference();
 
         findBoards();
         getHandle();
@@ -140,7 +126,7 @@ public class GSSequencer {
         while(!data.isEmpty())
         {
             EventStatus.setValue(Kernel32.INSTANCE.WaitForSingleObject(myHandle, wait_for_trigger_milliseconds));
-            System.out.println("buffer size before switch = "+ getLongRegister(Constants.BUFFER_SIZE).toString());
+            System.out.println("buffer size before switch = "+ getLongRegister(GSConstants.BUFFER_SIZE).toString());
             switch(EventStatus.intValue()) {
                 case 0x00://wait_object_0, object is signaled;
                     System.out.println(" object signaled ... writing to outputs");
@@ -178,7 +164,7 @@ public class GSSequencer {
     private void sendDMABuffer(GSBuffer bufferElement, int words)
     {
         BuffPtr.setPointer(bufferElement.getMemory().getJNAPointer().share(0));
-        INSTANCE.AO64_66_DMA_Transfer(Constants.ulBdNum, Constants.ulChannel, new NativeLong(words), BuffPtr, Constants.ulError);
+        INSTANCE.AO64_66_DMA_Transfer(GSConstants.ulBdNum, GSConstants.ulChannel, new NativeLong(words), BuffPtr, GSConstants.ulError);
     }
 
     /**
@@ -191,11 +177,11 @@ public class GSSequencer {
     private boolean checkDMAThreshSatisfied() throws DMAOccupancyException
     {
         // This will break if we allow the user to define his/her own interrupt flag.
-        if (Constants.InterruptValue.intValue() == 0x04)
+        if (GSConstants.InterruptValue.intValue() == 0x04)
         {
-            //int targetTHRSHLD = getLongRegister(Constants.BUFFER_THRSHLD).intValue();
+            //int targetTHRSHLD = getLongRegister(GSConstants.BUFFER_THRSHLD).intValue();
             int targetTHRSHLD = this.target_thresh_values;
-            int currentSize = getLongRegister(Constants.BUFFER_SIZE).intValue();
+            int currentSize = getLongRegister(GSConstants.BUFFER_SIZE).intValue();
             System.out.println("   targetThsld = "+targetTHRSHLD);
             System.out.println("   currentSize = "+currentSize);
             // True = Threshold satisfied, False = still under threshold
@@ -216,7 +202,7 @@ public class GSSequencer {
         if(nextBufferEntry == null) {return false;}
 
         int nextBufferSize = nextBufferEntry.getValsWritten();
-        int currentSize = getLongRegister(Constants.BUFFER_SIZE).intValue();
+        int currentSize = getLongRegister(GSConstants.BUFFER_SIZE).intValue();
         System.out.println("   nextBuff = "+nextBufferSize);
         System.out.println("   currentSize = "+currentSize);
         // true=WILL overflow, false=WILL NOT overflow
@@ -273,7 +259,7 @@ public class GSSequencer {
     private double setSampleRate(double fRate)
     {
         System.out.println("setting sample rate = "+fRate);
-        return INSTANCE.AO64_66_Set_Sample_Rate(Constants.ulBdNum, fRate, Constants.ulError);
+        return INSTANCE.AO64_66_Set_Sample_Rate(GSConstants.ulBdNum, fRate, GSConstants.ulError);
     }
 
     /**
@@ -284,7 +270,7 @@ public class GSSequencer {
     {
         System.out.println("setting buffer threshold = "+numValues);
         NativeLong val = new NativeLong(numValues);
-        setLongRegister(Constants.BUFFER_THRSHLD, val );
+        setLongRegister(GSConstants.BUFFER_THRSHLD, val );
     }
 
     /**
@@ -329,9 +315,9 @@ public class GSSequencer {
             throw new InterruptValueException("Invalid interrupt event value: must be 0 or 1 for DMA interrupt");
         } else {
             //intentionally instantiate value and type here
-            Constants.InterruptValue = new NativeLong(InterruptValue);
-            Constants.InterruptType = new NativeLong(DeviceType);
-            INSTANCE.AO64_66_EnableInterrupt(Constants.ulBdNum, Constants.InterruptValue, Constants.InterruptType, Constants.ulError);
+            GSConstants.InterruptValue = new NativeLong(InterruptValue);
+            GSConstants.InterruptType = new NativeLong(DeviceType);
+            INSTANCE.AO64_66_EnableInterrupt(GSConstants.ulBdNum, GSConstants.InterruptValue, GSConstants.InterruptType, GSConstants.ulError);
         }
     }
 
@@ -340,7 +326,7 @@ public class GSSequencer {
      */
     private void setDisableInterrupt()
     {
-        INSTANCE.AO64_66_DisableInterrupt(Constants.ulBdNum, Constants.InterruptValue, Constants.InterruptType, Constants.ulError);
+        INSTANCE.AO64_66_DisableInterrupt(GSConstants.ulBdNum, GSConstants.InterruptValue, GSConstants.InterruptType, GSConstants.ulError);
     }
 
     /**
@@ -352,26 +338,26 @@ public class GSSequencer {
         //CHECK THAT THIS IS THE RIGHT WAY TO SEE IF HANDLER IS SET
         if (Event == null) {
             throw new EventHandlerException("Event Handler not set");
-        } else if (Constants.InterruptType == null) {
+        } else if (GSConstants.InterruptType == null) {
             throw new InterruptDeviceTypeException("Interrupt device type not created");
         } else{
-            INSTANCE.AO64_66_Register_Interrupt_Notify(Constants.ulBdNum, Event, Constants.InterruptValue, Constants.InterruptType, Constants.ulError);
+            INSTANCE.AO64_66_Register_Interrupt_Notify(GSConstants.ulBdNum, Event, GSConstants.InterruptValue, GSConstants.InterruptType, GSConstants.ulError);
         }
     }
 
     private void stopInterruptNotification()
     {
-        INSTANCE.AO64_66_Cancel_Interrupt_Notify(Constants.ulBdNum, Event, Constants.ulError);
+        INSTANCE.AO64_66_Cancel_Interrupt_Notify(GSConstants.ulBdNum, Event, GSConstants.ulError);
     }
 
     private void startClock()
     {
-        INSTANCE.AO64_66_Enable_Clock(Constants.ulBdNum, Constants.ulError);
+        INSTANCE.AO64_66_Enable_Clock(GSConstants.ulBdNum, GSConstants.ulError);
     }
 
     private void stopClock()
     {
-        INSTANCE.AO64_66_Disable_Clock(Constants.ulBdNum, Constants.ulError);
+        INSTANCE.AO64_66_Disable_Clock(GSConstants.ulBdNum, GSConstants.ulError);
     }
 
     /**
@@ -381,16 +367,16 @@ public class GSSequencer {
     private void openDMAChannel(int channel)
     {
         //intentionally instantiate channel here
-        Constants.ulChannel = new NativeLong(channel);
-        INSTANCE.AO64_66_Open_DMA_Channel(Constants.ulBdNum, Constants.ulChannel, Constants.ulError);
+        GSConstants.ulChannel = new NativeLong(channel);
+        INSTANCE.AO64_66_Open_DMA_Channel(GSConstants.ulBdNum, GSConstants.ulChannel, GSConstants.ulError);
     }
 
     /**
-     * Close active DMA channel.  Value set by Constants.ulChannel is closed.
+     * Close active DMA channel.  Value set by GSConstants.ulChannel is closed.
      */
     private void closeDMAChannel()
     {
-        INSTANCE.AO64_66_Close_DMA_Channel(Constants.ulBdNum, Constants.ulChannel, Constants.ulError);
+        INSTANCE.AO64_66_Close_DMA_Channel(GSConstants.ulBdNum, GSConstants.ulChannel, GSConstants.ulError);
     }
 
 
@@ -402,7 +388,7 @@ public class GSSequencer {
     {
         Memory p = new Memory(69);
         ByteBuffer DeviceInfo = p.getByteBuffer(0, p.size()).order(ByteOrder.nativeOrder());
-        NativeLong out = INSTANCE.AO64_66_FindBoards(DeviceInfo, Constants.ulError);
+        NativeLong out = INSTANCE.AO64_66_FindBoards(DeviceInfo, GSConstants.ulError);
         byte[] bytes;
         if(DeviceInfo.hasArray()){
             bytes = DeviceInfo.array();
@@ -421,74 +407,74 @@ public class GSSequencer {
      */
     private NativeLong getHandle()
     {
-        return INSTANCE.AO64_66_Get_Handle(Constants.ulError, Constants.ulBdNum);
+        return INSTANCE.AO64_66_Get_Handle(GSConstants.ulError, GSConstants.ulBdNum);
     }
 
     /**
      * Not explicitly required for board initialization,
-     *      but sets values for Constants class that are critical for operation.
+     *      but sets values for GSConstants class that are critical for operation.
      */
     private void setBoardParams()
     {
-        Constants.numChan = new NativeLong();
-        Constants.id_off = new NativeLong();
-        Constants.eog = new NativeLong();
-        Constants.eof = new NativeLong();
-        Constants.disconnect = new NativeLong();
+        GSConstants.numChan = new NativeLong();
+        GSConstants.id_off = new NativeLong();
+        GSConstants.eog = new NativeLong();
+        GSConstants.eof = new NativeLong();
+        GSConstants.disconnect = new NativeLong();
 
-        Constants.ValueRead = getLongRegister(Constants.FW_REV);
+        GSConstants.ValueRead = getLongRegister(GSConstants.FW_REV);
 
-        switch((Constants.ValueRead.intValue() >> 16) & 0x03){
+        switch((GSConstants.ValueRead.intValue() >> 16) & 0x03){
             case 1:
-            case 2: Constants.numChan.setValue(32); break;
-            case 3: Constants.numChan.setValue(16); break;
-            default: Constants.numChan.setValue(64);
+            case 2: GSConstants.numChan.setValue(32); break;
+            case 3: GSConstants.numChan.setValue(16); break;
+            default: GSConstants.numChan.setValue(64);
         }
-        if((Constants.ValueRead.intValue() & 0xFFFF) >= 0x400){
-            Constants.id_off.setValue(24);
-            Constants.eog.setValue(30);
-            Constants.eof.setValue(31);
+        if((GSConstants.ValueRead.intValue() & 0xFFFF) >= 0x400){
+            GSConstants.id_off.setValue(24);
+            GSConstants.eog.setValue(30);
+            GSConstants.eof.setValue(31);
         } else{
-            Constants.id_off.setValue(16);
-            Constants.eog.setValue(22);
-            Constants.eof.setValue(23);
+            GSConstants.id_off.setValue(16);
+            GSConstants.eog.setValue(22);
+            GSConstants.eof.setValue(23);
         }
 
-        if((Constants.ValueRead.intValue() & 0x1000000) == 0x00){
-            Constants.disconnect.setValue(1);
+        if((GSConstants.ValueRead.intValue() & 0x1000000) == 0x00){
+            GSConstants.disconnect.setValue(1);
         }
 
         // Example uses the below to reset outputs to midscale
-        Constants.ReadValue = new NativeLong[16385];
-        for(int i = 0; i< Constants.numChan.intValue(); i++){
-            Constants.ReadValue[i] = new NativeLong( (i << Constants.id_off.intValue()) | (1 << Constants.eog.intValue()) | 0x8000 );
+        GSConstants.ReadValue = new NativeLong[16385];
+        for(int i = 0; i< GSConstants.numChan.intValue(); i++){
+            GSConstants.ReadValue[i] = new NativeLong( (i << GSConstants.id_off.intValue()) | (1 << GSConstants.eog.intValue()) | 0x8000 );
         }
 
-        System.out.println("numChan : ... : " + Constants.numChan);
-        System.out.println("id_off: ..... : " + Constants.id_off);
-        System.out.println("eog : ....... : " + Constants.eog);
-        System.out.println("eof : ....... : " + Constants.eof);
+        System.out.println("numChan : ... : " + GSConstants.numChan);
+        System.out.println("id_off: ..... : " + GSConstants.id_off);
+        System.out.println("eog : ....... : " + GSConstants.eog);
+        System.out.println("eof : ....... : " + GSConstants.eof);
     }
 
     /**
      * Required for board Initialization.
-     * Sets values in Constants class that are critical for operation
+     * Sets values in GSConstants class that are critical for operation
      */
     private void InitializeBoard()
     {
         System.out.println("Initializing Board");
-        INSTANCE.AO64_66_Initialize(Constants.ulBdNum, Constants.ulError);
-        Constants.BCR = new NativeLong(0x00);
-        Constants.Reserved = new NativeLong(0x04);
-        Constants.Reserved1 = new NativeLong(0x08);
-        Constants.BUFFER_OPS = new NativeLong(0x0C);
-        Constants.FW_REV = new NativeLong(0x10);
-        Constants.AUTO_CAL = new NativeLong(0x14);
-        Constants.OUTPUT_DATA_BUFFER = new NativeLong(0x18);
-        Constants.BUFFER_SIZE = new NativeLong(0x1C);
-        Constants.BUFFER_THRSHLD = new NativeLong(0x20);
-        Constants.RATE_A = new NativeLong(0x24);
-        Constants.RATE_B = new NativeLong(0x28);
+        INSTANCE.AO64_66_Initialize(GSConstants.ulBdNum, GSConstants.ulError);
+        GSConstants.BCR = new NativeLong(0x00);
+        GSConstants.Reserved = new NativeLong(0x04);
+        GSConstants.Reserved1 = new NativeLong(0x08);
+        GSConstants.BUFFER_OPS = new NativeLong(0x0C);
+        GSConstants.FW_REV = new NativeLong(0x10);
+        GSConstants.AUTO_CAL = new NativeLong(0x14);
+        GSConstants.OUTPUT_DATA_BUFFER = new NativeLong(0x18);
+        GSConstants.BUFFER_SIZE = new NativeLong(0x1C);
+        GSConstants.BUFFER_THRSHLD = new NativeLong(0x20);
+        GSConstants.RATE_A = new NativeLong(0x24);
+        GSConstants.RATE_B = new NativeLong(0x28);
     }
 
     /**
@@ -498,7 +484,7 @@ public class GSSequencer {
     private void AutoCalibration()
     {
         System.out.println("Autocalibrating the board");
-        if(INSTANCE.AO64_66_Autocal(Constants.ulBdNum, Constants.ulError).intValue() != 1)
+        if(INSTANCE.AO64_66_Autocal(GSConstants.ulBdNum, GSConstants.ulError).intValue() != 1)
         {
             System.out.println("Autocal Failed");
             System.exit(1);
@@ -521,13 +507,13 @@ public class GSSequencer {
      */
     private void TwosComplement()
     {
-        int bcrValue = INSTANCE.AO64_66_Read_Local32(Constants.ulBdNum, Constants.ulError, Constants.BCR).intValue();
+        int bcrValue = INSTANCE.AO64_66_Read_Local32(GSConstants.ulBdNum, GSConstants.ulError, GSConstants.BCR).intValue();
         if(((bcrValue>>4) & 1) == 1);
         {
             //flag is set high, must flip
             bcrValue &= ~0x10;
             NativeLong newValue = new NativeLong(bcrValue);
-            INSTANCE.AO64_66_Write_Local32(Constants.ulBdNum, Constants.ulError, Constants.BCR, newValue);
+            INSTANCE.AO64_66_Write_Local32(GSConstants.ulBdNum, GSConstants.ulError, GSConstants.BCR, newValue);
         } //else do nothing
     }
 
@@ -536,12 +522,12 @@ public class GSSequencer {
      */
     private static void connectOutputs()
     {
-        if(Constants.disconnect.equals(0)){
+        if(GSConstants.disconnect.equals(0)){
             return;
         }
-        NativeLong myData = getLongRegister(Constants.BCR);
+        NativeLong myData = getLongRegister(GSConstants.BCR);
         myData.setValue(myData.intValue() & ~0x4);
-        setLongRegister(Constants.BCR, myData);
+        setLongRegister(GSConstants.BCR, myData);
     }
 
     /**
@@ -549,22 +535,22 @@ public class GSSequencer {
      */
     public static void resetOutputsToZero()
     {
-        for(int cntr = 0; cntr < Constants.numChan.intValue() ; cntr++){
-            setLongRegister(Constants.OUTPUT_DATA_BUFFER, Constants.ReadValue[cntr]);
+        for(int cntr = 0; cntr < GSConstants.numChan.intValue() ; cntr++){
+            setLongRegister(GSConstants.OUTPUT_DATA_BUFFER, GSConstants.ReadValue[cntr]);
         }
     }
 
     private void closeHandle()
     {
-        INSTANCE.AO64_66_Close_Handle(Constants.ulBdNum, Constants.ulError);
+        INSTANCE.AO64_66_Close_Handle(GSConstants.ulBdNum, GSConstants.ulError);
     }
 
     private static NativeLong getLongRegister(NativeLong register) {
-        return INSTANCE.AO64_66_Read_Local32(Constants.ulBdNum, Constants.ulError, register);
+        return INSTANCE.AO64_66_Read_Local32(GSConstants.ulBdNum, GSConstants.ulError, register);
     }
 
     private static void setLongRegister(NativeLong register, NativeLong value) {
-        INSTANCE.AO64_66_Write_Local32(Constants.ulBdNum, Constants.ulError, register, value);
+        INSTANCE.AO64_66_Write_Local32(GSConstants.ulBdNum, GSConstants.ulError, register, value);
     }
 
     /**

@@ -1,6 +1,6 @@
 package gsao64.test;
 
-import gsao64.Constants;
+import gsao64.GSConstants;
 import gsao64.exceptions.ActiveChanException;
 import gsao64.exceptions.BufferTooLargeException;
 import gsao64.exceptions.FlagException;
@@ -21,7 +21,7 @@ public class GSBufferTests {
     private GSBuffer buffertest;
 
     //initialize constant values without initializing board
-    private Constants constants = new Constants();
+    private GSConstants lGSConstants = new GSConstants();
 
     /**
      * test gsao64 buffer constructor for too much data and > 3/4 full.
@@ -185,13 +185,13 @@ public class GSBufferTests {
             buffertest = new GSBuffer( 2000, 64);
             buffertest.appendValue(1,1);
             buffertest.appendEndofTP();
-            assertEquals(1, buffertest.getLastBlock() >>> constants.eog.intValue());
+            assertEquals(1, buffertest.getLastBlock() >>> lGSConstants.eog.intValue());
             buffertest.clearALL();
 
             buffertest = new GSBuffer( 2000, 64);
             buffertest.appendValue(-1,1);
             buffertest.appendEndofTP();
-            assertEquals(1, buffertest.getLastBlock() >>> constants.eog.intValue());
+            assertEquals(1, buffertest.getLastBlock() >>> lGSConstants.eog.intValue());
             buffertest.clearALL();
 
             buffertest = new GSBuffer( 2000, 64);
@@ -199,7 +199,7 @@ public class GSBufferTests {
             buffertest.appendEndofTP();
             buffertest.appendEndofFunction();
             //unsigned right shift necessary because EOF is most significant bit.
-            assertEquals(3, buffertest.getLastBlock() >>> constants.eog.intValue());
+            assertEquals(3, buffertest.getLastBlock() >>> lGSConstants.eog.intValue());
             buffertest.clearALL();
 
             buffertest = new GSBuffer( 2000, 64);
@@ -207,7 +207,7 @@ public class GSBufferTests {
             buffertest.appendEndofTP();
             buffertest.appendEndofFunction();
             //unsigned right shift necessary because EOF is most significant bit.
-            assertEquals(3, buffertest.getLastBlock() >>> constants.eog.intValue());
+            assertEquals(3, buffertest.getLastBlock() >>> lGSConstants.eog.intValue());
             buffertest.clearALL();
 
         } catch (Exception ex) {fail(ex);}
@@ -229,7 +229,7 @@ public class GSBufferTests {
             buffertest.appendEndofFunction();
         } catch (Exception ex) {fail(ex);}
 
-        assertEquals(1, (buffertest.getLastBlock() >>> constants.eof.intValue()) );
+        assertEquals(1, (buffertest.getLastBlock() >>> lGSConstants.eof.intValue()) );
 
         try {
             buffertest = new GSBuffer( 2000, 64);
@@ -238,7 +238,7 @@ public class GSBufferTests {
             buffertest.appendEndofFunction();
         } catch (Exception ex) {fail(ex);}
 
-        assertEquals(1, (buffertest.getLastBlock() >>> constants.eof.intValue()) );
+        assertEquals(1, (buffertest.getLastBlock() >>> lGSConstants.eof.intValue()) );
 
     }
 

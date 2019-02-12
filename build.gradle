@@ -64,7 +64,7 @@ test {
 dependencies {
 
     // Coremem:
-    compile('net.clearcontrol:coremem:0.4.6')
+    compile('net.clearcontrol:coremem:0.4.7')
 
     // JNA:
     compile(group: 'net.java.dev.jna',name: 'jna-platform', version: '4.5.1')
@@ -91,7 +91,7 @@ repositories {
 // PUBLISHING
 archivesBaseName = 'GS16AO64c'
 group = 'net.clearcontrol'
-version = '0.0.2'
+version = '0.0.3'
 description = 'General Standards 64 channel signal generator'
 
 publishing {
