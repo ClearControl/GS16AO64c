@@ -1,5 +1,6 @@
 package gsao64;
 
+import coremem.util.NativeLibResourceHandler;
 import gsao64.exceptions.*;
 import bindings.AO64_64b_Driver_CLibrary;
 import bindings.GS_NOTIFY_OBJECT;
@@ -23,6 +24,17 @@ import java.util.ArrayDeque;
  * 4)
  */
 public class GSSequencer {
+
+    static {
+        try {
+            NativeLibResourceHandler lNativeLibResourceHandler = new NativeLibResourceHandler();
+
+            lNativeLibResourceHandler.loadResourceFromJar(GSSequencer.class, "/win32-x86-64/GS64ebApi.dll");
+            lNativeLibResourceHandler.loadResourceFromJar(GSSequencer.class, "/win32-x86-64/AO64_64b_Driver_C.dll");
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
 
     private static AO64_64b_Driver_CLibrary INSTANCE;
 

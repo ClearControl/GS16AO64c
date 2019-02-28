@@ -14,7 +14,7 @@ public class GSConstants
 {
 
     // board parameters
-    public static NativeLong ulNumBds, ulBdNum, numChan, id_off, eog, eof, disconnect;
+    public static NativeLong ulBdNum, numChan, id_off, eog, eof, disconnect;
     public static NativeLongByReference ulError;
 
     // board register addresses
@@ -30,14 +30,4 @@ public class GSConstants
     public static NativeLong InterruptValue;
     public static NativeLong ulChannel;
     public static NativeLong ulWords;
-
-    /**
-     * used by tests when board is not present for initialization
-     */
-    public GSConstants()
-    {
-        id_off = new NativeLong(24);
-        eog = new NativeLong(30);
-        eof = new NativeLong(31);
-    }
 }

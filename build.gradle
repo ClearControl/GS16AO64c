@@ -21,7 +21,7 @@ apply plugin: 'maven-publish'
 // JAVA CODE BUILDING
 
 processResources {
-    from ('src/main/java') {
+    from ('src/main/resources') {
         include '**/*.lib'
         include '**/*.dll'
     }
@@ -91,7 +91,7 @@ repositories {
 // PUBLISHING
 archivesBaseName = 'GS16AO64c'
 group = 'net.clearcontrol'
-version = '0.0.3'
+version = '0.0.4'
 description = 'General Standards 64 channel signal generator'
 
 publishing {
@@ -102,7 +102,7 @@ publishing {
     }
 }
 
-bintray {
+task bintray << {
     user = property('bintray_user')
     key = property('bintray_key')
     publications = ['MyPublication']

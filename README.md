@@ -16,6 +16,7 @@ This module consists of two classes:
 	- Uses JNA to communicate with the DAC card
 	- Receives ArrayDeque of GSBuffers
 	- sends this ArrayDeque to the outputs continuously until it is empty.
+	- Constantly checks the threshold and applies it to use upto 75% of the DAC memory.
 
 Communication with the DAC drivers is mediated via JNA.  The JNA interface code is built using JNAerator, which is included in this repo.
 
