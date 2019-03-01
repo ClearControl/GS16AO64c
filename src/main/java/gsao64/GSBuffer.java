@@ -83,7 +83,7 @@ public class GSBuffer {
      * @return scaled voltage recast as short.
      * @throws VoltageRangeException value is less than 1 or greater than 1
      */
-    private int voltageToInt(double voltage) throws VoltageRangeException
+    private static int voltageToInt(double voltage) throws VoltageRangeException
     {
         int scaledVoltage;
         if(voltage < -1 || voltage > 1)

@@ -47,28 +47,56 @@ public class GSBufferTests {
      * test that voltage converter retains range of short
      */
     @Test
-    void GSBuffer_VoltageToIntConversion_negativeMax()
+    void GSBuffer_VoltageToIntConversion_negativeFullScale()
     {
         try {
             buffertest = new GSBuffer( 2000, 64);
             buffertest.appendValue(-1.0,1);
         } catch (Exception ex) {fail(ex);}
 
-        assertEquals(-32768, buffertest.getLastValue() );
+        assertEquals("8000", Integer.toHexString(buffertest.getLastValue() & 0xffff) );
     }
 
     /**
      * test that voltage converter retains range of short
      */
     @Test
-    void GSBuffer_VoltageToIntConversion_positiveMax()
+    void GSBuffer_VoltageToIntConversion_negativeFullScalePlus1LSB()
+    {
+        try {
+            buffertest = new GSBuffer( 2000, 64);
+            buffertest.appendValue(-0.999970,1);
+        } catch (Exception ex) {fail(ex);}
+
+        assertEquals("8001", Integer.toHexString(buffertest.getLastValue() & 0xffff) );
+    }
+
+    /**
+     * test that voltage converter retains range of short
+     */
+    @Test
+    void GSBuffer_VoltageToIntConversion_positiveFullScaleMinus1LSB()
     {
         try {
             buffertest = new GSBuffer( 2000, 64);
             buffertest.appendValue(1.0,1);
         } catch (Exception ex) {fail(ex);}
 
-        assertEquals(32767, buffertest.getLastValue() );
+        assertEquals("7fff", Integer.toHexString(buffertest.getLastValue() & 0xffff) );
+    }
+
+    /**
+     * test that zero voltage is handled
+     */
+    @Test
+    void GSBuffer_VoltageToIntConversion_zeroPlus1LSB()
+    {
+        try {
+            buffertest = new GSBuffer( 2000, 64);
+            buffertest.appendValue(0.00006,1);
+        } catch (Exception ex) {fail(ex);}
+
+        assertEquals("1", Integer.toHexString(buffertest.getLastValue() & 0xffff) );
     }
 
     /**
@@ -82,7 +110,21 @@ public class GSBufferTests {
             buffertest.appendValue(0,1);
         } catch (Exception ex) {fail(ex);}
 
-        assertEquals(0, buffertest.getLastValue());
+        assertEquals("0", Integer.toHexString(buffertest.getLastValue() & 0xffff) );
+    }
+
+    /**
+     * test that zero voltage is handled
+     */
+    @Test
+    void GSBuffer_VoltageToIntConversion_zeroMinus1LSB()
+    {
+        try {
+            buffertest = new GSBuffer( 2000, 64);
+            buffertest.appendValue(-0.00006,1);
+        } catch (Exception ex) {fail(ex);}
+
+        assertEquals("ffff", Integer.toHexString(buffertest.getLastValue() & 0xffff) );
     }
 
     /**
