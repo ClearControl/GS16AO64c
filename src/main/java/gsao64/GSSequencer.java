@@ -15,8 +15,7 @@ import java.io.File;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.charset.Charset;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.nio.file.*;
 import java.util.ArrayDeque;
 
 /**
@@ -32,9 +31,9 @@ public class GSSequencer {
         try {
             NativeLibResourceHandler lNativeLibResourceHandler = new NativeLibResourceHandler();
 
-            Path path = Paths.get("src/main/resources/win32-x86-64/GS64ebApi.dll");
-            System.out.println(path.toAbsolutePath().toString());
-            File lFile = new File(Paths.get("src/main/resources/win32-x86-64/GS64ebApi.dll").toAbsolutePath().toString());
+            File lTmpFile = lNativeLibResourceHandler.copyResourceFromJarToTempFile(GSSequencer.class,"/win32-x86-64/GS64ebApi.dll");
+            File lFile = new File("GS64ebApi.dll");
+            Files.copy(lTmpFile.toPath(), lFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
             System.load(lFile.getAbsolutePath());
 
             lNativeLibResourceHandler.loadResourceFromJar(GSSequencer.class, "/win32-x86-64/AO64_64b_Driver_C.dll");
