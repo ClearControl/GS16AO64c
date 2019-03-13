@@ -14,12 +14,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class GSSplitterBufferTests
 {
-    static {
-        GSConstants.id_off = new NativeLong(24);
-        GSConstants.eog = new NativeLong(30);
-        GSConstants.eof = new NativeLong(31);
-    }
-
     private GSSplitterBuffer bufferTest1;
     private GSSplitterBuffer bufferTest2;
 

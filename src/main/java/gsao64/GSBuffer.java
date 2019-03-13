@@ -2,6 +2,7 @@ package gsao64;
 
 import java.util.*;
 
+import com.sun.jna.NativeLong;
 import gsao64.exceptions.*;
 import coremem.ContiguousMemoryInterface;
 import coremem.buffers.ContiguousBuffer;
@@ -28,6 +29,12 @@ import coremem.buffers.ContiguousBuffer;
  * 5) eog must be written before "end of function" flag is placed
  */
 public class GSBuffer {
+
+    static {
+        if (GSConstants.id_off == null) GSConstants.id_off = new NativeLong(24);
+        if (GSConstants.eog == null) GSConstants.eog = new NativeLong(30);
+        if (GSConstants.eof == null) GSConstants.eof = new NativeLong(31);
+    }
 
     private ContiguousBuffer buffer;
 
