@@ -48,8 +48,8 @@ public class GSSplitterBufferTests
     void GSSplitterBuffer_testBasicFunctionality()
     {
         try {
-            sequencerTest = new GSSequencer(65536*2, 40000);
-            bufferTest1 = new GSSplitterBuffer(4096 * 10, 16);
+            sequencerTest = new GSSequencer(65536*2, 4096 * 2);
+            bufferTest1 = new GSSplitterBuffer(4096 * 20, 16);
         } catch (DriverBindingsException lnk) {
             System.out.println("test skipped: "+lnk.getMessage());
             return;
@@ -57,7 +57,7 @@ public class GSSplitterBufferTests
             fail(ex);
         }
 
-        continuousSineFunction(bufferTest1, 4096 * 10);
+        continuousSineFunction(bufferTest1, 4096 * 20);
 
         if (sequencerTest.play(bufferTest1.getData(), 1)) {
             System.out.println("Successful write even with above problematic buffer size");
@@ -76,7 +76,8 @@ public class GSSplitterBufferTests
         try {
             for (int loop = 0; loop < numTP; loop++) {
                 for (int i = 0; i < 16; i++) {
-                    float value = (float) Math.sin(0.02*loop+0.01*i);
+//                    float value = (float) Math.sin(0.02*loop+0.01*i);
+                    float value = (float) Math.sin(Math.PI * 2 * ((float)loop/(4096 * 2)));
                     data.appendValue(value, i);
                 }
                 data.appendEndofTP();

@@ -4,6 +4,7 @@ package gsao64;
 import gsao64.exceptions.*;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class GSSplitterBuffer
         this.mMaxChan = maxChan;
 
         // Initialize the list
-        this.mData = new LinkedList<>();
+        this.mData = new ArrayList<>(); // Should be ArrayList as we do add and get where both O(1) with ArrayList
         mCurrentBufferIndex = 0;
 
         mMaxTPPerGSBuffer = (int)Math.floor(65536.0 / mMaxChan);
@@ -38,7 +39,7 @@ public class GSSplitterBuffer
     public void appendValue(float value, int i)
     {
         int totalValsWritten = this.mData.get(mCurrentBufferIndex).getValsWritten();
-        if (mMaxTPPerGSBuffer * mMaxChan - totalValsWritten < mMaxChan)
+        if (totalValsWritten == mMaxTPPerGSBuffer * mMaxChan)
             mCurrentBufferIndex++;
 
         try {
