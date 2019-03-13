@@ -11,10 +11,10 @@ import java.util.List;
 public class GSSplitterBuffer
 {
     public List<GSBuffer> mData;
-    int mCurrentBufferIndex;
-    int mMaxChan;
-    int mMaxTP;
-    int mMaxTPPerGSBuffer;
+    private int mCurrentBufferIndex;
+    private int mMaxChan;
+    private int mMaxTP;
+    private int mMaxTPPerGSBuffer;
 
     public GSSplitterBuffer(int maxTP, int maxChan) throws BufferTooLargeException, BoardInitializeException
     {
@@ -36,7 +36,7 @@ public class GSSplitterBuffer
         this.mData.add(new GSBuffer(mMaxTPPerGSBuffer, mMaxChan));
     }
 
-    public void appendValue(float value, int i)
+    public void appendValue(double value, int i)
     {
         int totalValsWritten = this.mData.get(mCurrentBufferIndex).getValsWritten();
         if (totalValsWritten == mMaxTPPerGSBuffer * mMaxChan)
@@ -68,4 +68,6 @@ public class GSSplitterBuffer
     }
 
     public ArrayDeque<GSBuffer> getData() { return new ArrayDeque<>(this.mData); }
+
+    public int getmCurrentBufferIndex() { return mCurrentBufferIndex; }
 }

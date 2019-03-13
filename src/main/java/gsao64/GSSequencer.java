@@ -11,9 +11,11 @@ import com.sun.jna.platform.win32.WinDef.DWORD;
 import com.sun.jna.platform.win32.WinNT.HANDLE;
 import com.sun.jna.ptr.NativeLongByReference;
 
+import java.io.File;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.charset.Charset;
+import java.nio.file.*;
 import java.util.ArrayDeque;
 
 /**
@@ -29,7 +31,11 @@ public class GSSequencer {
         try {
             NativeLibResourceHandler lNativeLibResourceHandler = new NativeLibResourceHandler();
 
-            lNativeLibResourceHandler.loadResourceFromJar(GSSequencer.class, "/win32-x86-64/GS64ebApi.dll");
+            File lTmpFile = lNativeLibResourceHandler.copyResourceFromJarToTempFile(GSSequencer.class,"/win32-x86-64/GS64ebApi.dll");
+            File lFile = new File("GS64ebApi.dll");
+            Files.copy(lTmpFile.toPath(), lFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            System.load(lFile.getAbsolutePath());
+
             lNativeLibResourceHandler.loadResourceFromJar(GSSequencer.class, "/win32-x86-64/AO64_64b_Driver_C.dll");
         } catch (Throwable e) {
             e.printStackTrace();
