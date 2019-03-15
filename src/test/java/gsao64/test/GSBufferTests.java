@@ -7,14 +7,13 @@ import gsao64.exceptions.BufferTooLargeException;
 import gsao64.exceptions.FlagException;
 import gsao64.exceptions.VoltageRangeException;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import gsao64.GSBuffer;
 
 import java.util.HashMap;
 import java.util.TreeSet;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class GSBufferTests {
@@ -30,11 +29,11 @@ public class GSBufferTests {
     @Test
     void GSBuffer_BufferMaxSize()
     {
-        assertThrows(BufferTooLargeException.class, () -> new GSBuffer(4001, 64 ));
+        assertThrows(BufferTooLargeException.class, () -> new GSBuffer(4001));
 
-        assertThrows(BufferTooLargeException.class, () -> new GSBuffer(3999, 64 ));
+        assertThrows(BufferTooLargeException.class, () -> new GSBuffer(4000));
 
-        assertThrows(BufferTooLargeException.class, () -> new GSBuffer(2000, 500 ));
+        assertThrows(BufferTooLargeException.class, () -> new GSBuffer(3000));
     }
 
     /**
@@ -44,7 +43,7 @@ public class GSBufferTests {
     void GSBuffer_VoltageToIntConversion_negativeFullScale()
     {
         try {
-            buffertest = new GSBuffer( 2000, 64);
+            buffertest = new GSBuffer( 2000);
             buffertest.appendValue(-1.0,1);
         } catch (Exception ex) {fail(ex);}
 
@@ -58,7 +57,7 @@ public class GSBufferTests {
     void GSBuffer_VoltageToIntConversion_negativeFullScalePlus1LSB()
     {
         try {
-            buffertest = new GSBuffer( 2000, 64);
+            buffertest = new GSBuffer( 2000);
             buffertest.appendValue(-0.999970,1);
         } catch (Exception ex) {fail(ex);}
 
@@ -72,7 +71,7 @@ public class GSBufferTests {
     void GSBuffer_VoltageToIntConversion_positiveFullScaleMinus1LSB()
     {
         try {
-            buffertest = new GSBuffer( 2000, 64);
+            buffertest = new GSBuffer( 2000);
             buffertest.appendValue(1.0,1);
         } catch (Exception ex) {fail(ex);}
 
@@ -86,7 +85,7 @@ public class GSBufferTests {
     void GSBuffer_VoltageToIntConversion_zeroPlus1LSB()
     {
         try {
-            buffertest = new GSBuffer( 2000, 64);
+            buffertest = new GSBuffer( 2000);
             buffertest.appendValue(0.00006,1);
         } catch (Exception ex) {fail(ex);}
 
@@ -100,7 +99,7 @@ public class GSBufferTests {
     void GSBuffer_VoltageToIntConversion_zero()
     {
         try {
-            buffertest = new GSBuffer( 2000, 64);
+            buffertest = new GSBuffer( 2000);
             buffertest.appendValue(0,1);
         } catch (Exception ex) {fail(ex);}
 
@@ -114,7 +113,7 @@ public class GSBufferTests {
     void GSBuffer_VoltageToIntConversion_zeroMinus1LSB()
     {
         try {
-            buffertest = new GSBuffer( 2000, 64);
+            buffertest = new GSBuffer( 2000);
             buffertest.appendValue(-0.00006,1);
         } catch (Exception ex) {fail(ex);}
 
@@ -128,7 +127,7 @@ public class GSBufferTests {
     void GSBuffer_VoltageToIntConversion_limit_low()
     {
         try {
-            buffertest = new GSBuffer( 2000, 64);
+            buffertest = new GSBuffer( 2000);
         } catch (Exception ex) {fail(ex);}
 
         assertThrows(VoltageRangeException.class, () -> buffertest.appendValue(-10,1));
@@ -142,7 +141,7 @@ public class GSBufferTests {
     void GSBuffer_VoltageToIntConversion_limit_high()
     {
         try {
-            buffertest = new GSBuffer( 2000, 64);
+            buffertest = new GSBuffer( 2000);
         } catch (Exception ex) {fail(ex);}
 
         assertThrows(VoltageRangeException.class, () -> buffertest.appendValue(10,1));
@@ -156,7 +155,7 @@ public class GSBufferTests {
     void GSBuffer_VoltageToIntConversion_PostiveValues()
     {
         try {
-            buffertest = new GSBuffer( 2000, 64);
+            buffertest = new GSBuffer( 2000);
         } catch (Exception ex) {fail(ex);}
 
         try {
@@ -181,7 +180,7 @@ public class GSBufferTests {
     void GSBuffer_VoltageToIntConversion_NegativeValues()
     {
         try {
-            buffertest = new GSBuffer( 2000, 64);
+            buffertest = new GSBuffer( 2000);
         } catch (Exception ex) {fail(ex);}
 
         try {
@@ -207,7 +206,7 @@ public class GSBufferTests {
     void GSBuffer_EOG_2xWrite()
     {
         try {
-            buffertest = new GSBuffer( 2000, 64);
+            buffertest = new GSBuffer( 2000);
             buffertest.appendValue(0.5,1);
             buffertest.appendEndofTP();
         } catch (Exception ex) {fail(ex);}
@@ -225,19 +224,19 @@ public class GSBufferTests {
     void GSBuffer_EOG_correctFlag()
     {
         try {
-            buffertest = new GSBuffer( 2000, 64);
+            buffertest = new GSBuffer( 2000);
             buffertest.appendValue(1,1);
             buffertest.appendEndofTP();
             assertEquals(1, buffertest.getLastBlock() >>> lGSConstants.eog.intValue());
             buffertest.clearALL();
 
-            buffertest = new GSBuffer( 2000, 64);
+            buffertest = new GSBuffer( 2000);
             buffertest.appendValue(-1,1);
             buffertest.appendEndofTP();
             assertEquals(1, buffertest.getLastBlock() >>> lGSConstants.eog.intValue());
             buffertest.clearALL();
 
-            buffertest = new GSBuffer( 2000, 64);
+            buffertest = new GSBuffer( 2000);
             buffertest.appendValue(1,1);
             buffertest.appendEndofTP();
             buffertest.appendEndofFunction();
@@ -245,7 +244,7 @@ public class GSBufferTests {
             assertEquals(3, buffertest.getLastBlock() >>> lGSConstants.eog.intValue());
             buffertest.clearALL();
 
-            buffertest = new GSBuffer( 2000, 64);
+            buffertest = new GSBuffer( 2000);
             buffertest.appendValue(-1,1);
             buffertest.appendEndofTP();
             buffertest.appendEndofFunction();
@@ -266,7 +265,7 @@ public class GSBufferTests {
     void GSBuffer_EOF_correctFlag()
     {
         try {
-            buffertest = new GSBuffer( 2000, 64);
+            buffertest = new GSBuffer( 2000);
             buffertest.appendValue(1,1);
             buffertest.appendEndofTP();
             buffertest.appendEndofFunction();
@@ -275,7 +274,7 @@ public class GSBufferTests {
         assertEquals(1, (buffertest.getLastBlock() >>> lGSConstants.eof.intValue()) );
 
         try {
-            buffertest = new GSBuffer( 2000, 64);
+            buffertest = new GSBuffer( 2000);
             buffertest.appendValue(-1,1);
             buffertest.appendEndofTP();
             buffertest.appendEndofFunction();
@@ -292,7 +291,7 @@ public class GSBufferTests {
     void GSBuffer_WriteChannel_2x()
     {
         try {
-            buffertest = new GSBuffer( 2000, 64);
+            buffertest = new GSBuffer( 2000);
             buffertest.appendValue(1,1);
         } catch (Exception ex) {fail(ex);}
 
@@ -307,7 +306,7 @@ public class GSBufferTests {
     void GSBuffer_WriteChannel_OverFillBuffer()
     {
         try {
-            buffertest = new GSBuffer( 100, 2);
+            buffertest = new GSBuffer( 100);
         } catch (Exception ex) {fail(ex);}
 
 
@@ -327,7 +326,7 @@ public class GSBufferTests {
     void GSBuffer_WriteChannel_range()
     {
         try {
-            buffertest = new GSBuffer( 2000, 64);
+            buffertest = new GSBuffer( 2000);
         } catch (Exception ex) {fail(ex);}
 
         assertThrows(Exception.class, () -> buffertest.appendValue(1,65));
@@ -344,7 +343,7 @@ public class GSBufferTests {
     void GSBuffer_WriteChannel_order()
     {
         try {
-            buffertest = new GSBuffer( 2000, 64);
+            buffertest = new GSBuffer( 2000);
             buffertest.appendValue(1,1);
             buffertest.appendValue(1,3);
         } catch (Exception ex) {fail(ex);}
@@ -360,7 +359,7 @@ public class GSBufferTests {
     void GSBuffer_getActiveChannels()
     {
         try {
-            buffertest = new GSBuffer( 2000, 64);
+            buffertest = new GSBuffer( 2000);
             buffertest.appendValue(1,1);
             buffertest.appendValue(1,2);
             buffertest.appendValue(1,3);
@@ -372,6 +371,32 @@ public class GSBufferTests {
 
     }
 
+    @Test
+    void GSBuffer_consecutiveIdenticalTimePoints()
+    {
+        try {
+            buffertest = new GSBuffer( 2000);
+        } catch (Exception ex) {fail(ex);}
+
+        try {
+            for (int loop = 0; loop < 100; loop++) {
+                try {
+                    boolean newValueAdded = false;
+                    for (int i = 0; i < 16; i++) {
+                        newValueAdded = buffertest.appendValue(0.0f, i);
+                    }
+                    if (newValueAdded)
+                        buffertest.appendEndofTP();
+                } catch (Exception ex) {
+                    fail(ex);
+                }
+            }
+            buffertest.appendEndofFunction();
+        } catch (Exception ex) {
+            fail(ex);
+        }
+    }
+
     /**
      * loop to write several channels to several time points.
      * check the written values using "getTPValues"
@@ -380,7 +405,7 @@ public class GSBufferTests {
     void GSBuffer_MultipleTimePoints()
     {
         try {
-            buffertest = new GSBuffer( 2000, 5);
+            buffertest = new GSBuffer( 2000);
         } catch (Exception ex) {fail(ex);}
 
         try {

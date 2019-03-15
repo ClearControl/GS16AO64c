@@ -30,10 +30,10 @@ public class GSSplitterBuffer
         int totalTP = mMaxTP;
 
         while (totalTP > 0) {
-            this.mData.add(new GSBuffer(mMaxTPPerGSBuffer, mMaxChan));
+            this.mData.add(new GSBuffer(mMaxTPPerGSBuffer));
             totalTP -= mMaxTPPerGSBuffer;
         }
-        this.mData.add(new GSBuffer(mMaxTPPerGSBuffer, mMaxChan));
+        this.mData.add(new GSBuffer(mMaxTPPerGSBuffer));
     }
 
     public void appendValue(double value, int i)

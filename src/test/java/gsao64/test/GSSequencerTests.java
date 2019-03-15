@@ -34,7 +34,7 @@ public class GSSequencerTests {
     void GSSequencer_testInitialize() {
         try {
             sequencerTest = new GSSequencer(65536, 40000);
-            bufferTest1 = new GSBuffer(1000, 32);
+            bufferTest1 = new GSBuffer(1000);
         } catch (DriverBindingsException lnk) {
             System.out.println("test skipped: "+lnk.getMessage());
         } catch (Exception ex) {
@@ -60,7 +60,7 @@ public class GSSequencerTests {
     {
         try {
             sequencerTest = new GSSequencer(65536, 40000);
-            bufferTest1 = new GSBuffer(4096, 16);
+            bufferTest1 = new GSBuffer(4096);
         } catch (DriverBindingsException lnk) {
             System.out.println("test skipped: "+lnk.getMessage());
             return;
@@ -89,7 +89,7 @@ public class GSSequencerTests {
     {
         try {
             sequencerTest = new GSSequencer(65536, 40000);
-            bufferTest1 = new GSBuffer(1, 1);
+            bufferTest1 = new GSBuffer(1);
             bufferTest1.appendValue(0.5, 0);
             bufferTest1.appendEndofTP();
             bufferTest1.appendEndofFunction();
@@ -127,8 +127,8 @@ public class GSSequencerTests {
     {
         try {
             sequencerTest = new GSSequencer(192000, 40000);
-            bufferTest1 = new GSBuffer(4096, 16);
-            bufferTest2 = new GSBuffer(7999, 16);
+            bufferTest1 = new GSBuffer(4096);
+            bufferTest2 = new GSBuffer(7999);
         } catch (DriverBindingsException lnk) {
             System.out.println("test skipped: "+lnk.getMessage());
             return;
@@ -160,8 +160,8 @@ public class GSSequencerTests {
     {
         try {
             sequencerTest = new GSSequencer(65536*2, 40000);
-            bufferTest1 = new GSBuffer(4096, 16);
-            bufferTest2 = new GSBuffer(4096, 16);
+            bufferTest1 = new GSBuffer(4096);
+            bufferTest2 = new GSBuffer(4096);
         } catch (DriverBindingsException lnk) {
             System.out.println("test skipped: "+lnk.getMessage());
             return;
@@ -205,7 +205,7 @@ public class GSSequencerTests {
         arrayData = new ArrayDeque<>();
 
         try {
-            bufferTest1 = new GSBuffer(5, 64);
+            bufferTest1 = new GSBuffer(5);
             for (int i = 0; i < 64; i++) {
                 bufferTest1.appendValue(0, i);
                 bufferTest1.appendEndofTP();
@@ -225,7 +225,7 @@ public class GSSequencerTests {
     void GSSequencer_testSimpleSequence() {
         try {
             sequencerTest = new GSSequencer(65536, 40000);
-            bufferTest1 = new GSBuffer(4096, 16);
+            bufferTest1 = new GSBuffer(4096);
         } catch (DriverBindingsException lnk) {
             System.out.println("test skipped: "+lnk.getMessage());
             return;
