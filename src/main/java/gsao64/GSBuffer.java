@@ -44,6 +44,7 @@ public class GSBuffer {
     private int tpsWritten;
     private int valsWritten;
     private int maxSizeInBytes;
+    private boolean newValueAddedInCurrentTP;
     public double sampleRate = 0;
 
     /**
@@ -78,6 +79,7 @@ public class GSBuffer {
         TPtoPosMap.put(0,0);
         //maps channel to most recent value
         chanValues = new Integer[65];
+        newValueAddedInCurrentTP = false;
     }
 
     /**
@@ -149,6 +151,7 @@ public class GSBuffer {
             valsWritten += 1;
             activeChans.add(chan);
             chanValues[chan] =  value;
+            newValueAddedInCurrentTP = true;
             return true;
         }
     }
@@ -156,20 +159,17 @@ public class GSBuffer {
     /**
      * adds an "end of group" flag to the most recent value written
      */
-    public void appendEndofTP() throws FlagException
+    public void appendEndofTP()
     {
+        if (!newValueAddedInCurrentTP)
+            return;
+
         // move to beginning of last value
         buffer.popPosition();
         buffer.popPosition();
         buffer.pushPosition();
 
         int value = buffer.readInt();
-
-        if (value >>> GSConstants.eog.intValue() == 1)
-        {
-            throw new FlagException(
-                    "end of timepoint flag already exists!");
-        }
         int writeValue = ( (1 << GSConstants.eog.intValue()) | value);
 
         // do not use 'appendValue'
@@ -184,6 +184,7 @@ public class GSBuffer {
         TPtoPosMap.put(tpsWritten, 4*valsWritten);
         activeChans.clear();
         activeChans.add(-1);
+        newValueAddedInCurrentTP = false;
     }
 
     /**
@@ -266,9 +267,18 @@ public class GSBuffer {
      * get total timepoints written
      * @return integer tps written
      */
-    public int getNumTP()
+    public int getNumTPWritten()
     {
         return tpsWritten;
+    }
+
+    /**
+     * get total timepoints possible
+     * @return integer tps written
+     */
+    public int getNumTP()
+    {
+        return maxSizeInBytes / (64 * 4);
     }
 
     /**
