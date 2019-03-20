@@ -144,7 +144,7 @@ public class GSSequencer {
         while(!data.isEmpty())
         {
             EventStatus.setValue(Kernel32.INSTANCE.WaitForSingleObject(myHandle, wait_for_trigger_milliseconds));
-            System.out.println("buffer size before switch = "+ getLongRegister(GSConstants.BUFFER_SIZE).toString());
+            System.out.println("buffer size before switch = "+ getLongRegister(GSConstants.BUFFER_SIZE_RA).toString());
             switch(EventStatus.intValue()) {
                 case 0x00://wait_object_0, object is signaled;
                     System.out.println(" object signaled ... writing to outputs");
@@ -197,9 +197,9 @@ public class GSSequencer {
         // This will break if we allow the user to define his/her own interrupt flag.
         if (GSConstants.InterruptValue.intValue() == 0x04)
         {
-            //int targetTHRSHLD = getLongRegister(GSConstants.BUFFER_THRSHLD).intValue();
+            //int targetTHRSHLD = getLongRegister(GSConstants.BUFFER_THRSHLD_RA).intValue();
             int targetTHRSHLD = this.target_thresh_values;
-            int currentSize = getLongRegister(GSConstants.BUFFER_SIZE).intValue();
+            int currentSize = getLongRegister(GSConstants.BUFFER_SIZE_RA).intValue();
             System.out.println("   targetThsld = "+targetTHRSHLD);
             System.out.println("   currentSize = "+currentSize);
             // True = Threshold satisfied, False = still under threshold
@@ -220,7 +220,7 @@ public class GSSequencer {
         if(nextBufferEntry == null) {return false;}
 
         int nextBufferSize = nextBufferEntry.getValsWritten();
-        int currentSize = getLongRegister(GSConstants.BUFFER_SIZE).intValue();
+        int currentSize = getLongRegister(GSConstants.BUFFER_SIZE_RA).intValue();
         System.out.println("   nextBuff = "+nextBufferSize);
         System.out.println("   currentSize = "+currentSize);
         // true=WILL overflow, false=WILL NOT overflow
@@ -288,7 +288,7 @@ public class GSSequencer {
     {
         System.out.println("setting buffer threshold = "+numValues);
         NativeLong val = new NativeLong(numValues);
-        setLongRegister(GSConstants.BUFFER_THRSHLD, val );
+        setLongRegister(GSConstants.BUFFER_THRSHLD_RA, val );
     }
 
     /**
@@ -440,7 +440,7 @@ public class GSSequencer {
         GSConstants.eof = new NativeLong();
         GSConstants.disconnect = new NativeLong();
 
-        GSConstants.ValueRead = getLongRegister(GSConstants.FW_REV);
+        GSConstants.ValueRead = getLongRegister(GSConstants.FW_REV_RA);
 
         switch((GSConstants.ValueRead.intValue() >> 16) & 0x03){
             case 1:
@@ -482,17 +482,6 @@ public class GSSequencer {
     {
         System.out.println("Initializing Board");
         INSTANCE.AO64_66_Initialize(GSConstants.ulBdNum, GSConstants.ulError);
-        GSConstants.BCR = new NativeLong(0x00);
-        GSConstants.Reserved = new NativeLong(0x04);
-        GSConstants.Reserved1 = new NativeLong(0x08);
-        GSConstants.BUFFER_OPS = new NativeLong(0x0C);
-        GSConstants.FW_REV = new NativeLong(0x10);
-        GSConstants.AUTO_CAL = new NativeLong(0x14);
-        GSConstants.OUTPUT_DATA_BUFFER = new NativeLong(0x18);
-        GSConstants.BUFFER_SIZE = new NativeLong(0x1C);
-        GSConstants.BUFFER_THRSHLD = new NativeLong(0x20);
-        GSConstants.RATE_A = new NativeLong(0x24);
-        GSConstants.RATE_B = new NativeLong(0x28);
     }
 
     /**
@@ -525,27 +514,27 @@ public class GSSequencer {
      */
     private void TwosComplement()
     {
-        int bcrValue = INSTANCE.AO64_66_Read_Local32(GSConstants.ulBdNum, GSConstants.ulError, GSConstants.BCR).intValue();
+        int bcrValue = INSTANCE.AO64_66_Read_Local32(GSConstants.ulBdNum, GSConstants.ulError, GSConstants.BCR_RA).intValue();
         if(((bcrValue>>4) & 1) == 1);
         {
             //flag is set high, must flip
             bcrValue &= ~0x10;
             NativeLong newValue = new NativeLong(bcrValue);
-            INSTANCE.AO64_66_Write_Local32(GSConstants.ulBdNum, GSConstants.ulError, GSConstants.BCR, newValue);
+            INSTANCE.AO64_66_Write_Local32(GSConstants.ulBdNum, GSConstants.ulError, GSConstants.BCR_RA, newValue);
         } //else do nothing
     }
 
     /**
-     * Flips "Disconnect outputs" bit to LOW in the BCR
+     * Flips "Disconnect outputs" bit to LOW in the BCR_RA
      */
     private static void connectOutputs()
     {
         if(GSConstants.disconnect.equals(0)){
             return;
         }
-        NativeLong myData = getLongRegister(GSConstants.BCR);
+        NativeLong myData = getLongRegister(GSConstants.BCR_RA);
         myData.setValue(myData.intValue() & ~0x4);
-        setLongRegister(GSConstants.BCR, myData);
+        setLongRegister(GSConstants.BCR_RA, myData);
     }
 
     /**
@@ -554,7 +543,7 @@ public class GSSequencer {
     public static void resetOutputsToZero()
     {
         for(int cntr = 0; cntr < GSConstants.numChan.intValue() ; cntr++){
-            setLongRegister(GSConstants.OUTPUT_DATA_BUFFER, GSConstants.ReadValue[cntr]);
+            setLongRegister(GSConstants.OUTPUT_DATA_BUFFER_RA, GSConstants.ReadValue[cntr]);
         }
     }
 
