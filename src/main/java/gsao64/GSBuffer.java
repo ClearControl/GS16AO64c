@@ -44,30 +44,28 @@ public class GSBuffer {
     private int tpsWritten;
     private int valsWritten;
     private int maxSizeInBytes;
+    private boolean newValueAddedInCurrentTP;
     public double sampleRate = 0;
 
     /**
      * Constructor creates buffer by simple maxTP*maxChan calculation
      *       Buffer has a maximum capacity of 256k VALUES, values = 32 bit each
      *
-     * @param maxTP number of timepoints addressed
-     * @param maxChan: maximum number of channels that will be addressed
+     * @param maxTP number of timepoints addressed, maximum allowed is 3000 per buffer
+     *              as all buffers support 64 bit by default
      */
-    public GSBuffer(int maxTP, int maxChan) throws BufferTooLargeException, BoardInitializeException {
+    public GSBuffer(int maxTP) throws BufferTooLargeException, BoardInitializeException {
 
         if(GSConstants.id_off == null || GSConstants.eog == null || GSConstants.eof == null) {
             throw new BoardInitializeException(
                     "gsao64 DAC Board constants not Initialized.  Must construct a GSSequencer first");
         }
 
-        maxSizeInBytes = maxTP * maxChan * 4;
-        if ((maxSizeInBytes / 4) >= 256000) {
-            throw new BufferTooLargeException(
-                    "Requested buffer too large.  maxTP * maxChan must be < 256000");
-        } else if ((maxSizeInBytes / 4) >= 192000) {
+        if (maxTP >= 3000) {
             throw new BufferTooLargeException(
                     "Requested buffer too large: threshold set to < 3/4 max capacity of 256k values");
         } else {
+            maxSizeInBytes = maxTP * 64 * 4;
             buffer = ContiguousBuffer.allocate(maxSizeInBytes);
         }
         buffer.pushPosition();
@@ -81,6 +79,7 @@ public class GSBuffer {
         TPtoPosMap.put(0,0);
         //maps channel to most recent value
         chanValues = new Integer[65];
+        newValueAddedInCurrentTP = false;
     }
 
     /**
@@ -152,6 +151,7 @@ public class GSBuffer {
             valsWritten += 1;
             activeChans.add(chan);
             chanValues[chan] =  value;
+            newValueAddedInCurrentTP = true;
             return true;
         }
     }
@@ -159,20 +159,17 @@ public class GSBuffer {
     /**
      * adds an "end of group" flag to the most recent value written
      */
-    public void appendEndofTP() throws FlagException
+    public void appendEndofTP()
     {
+        if (!newValueAddedInCurrentTP)
+            return;
+
         // move to beginning of last value
         buffer.popPosition();
         buffer.popPosition();
         buffer.pushPosition();
 
         int value = buffer.readInt();
-
-        if (value >>> GSConstants.eog.intValue() == 1)
-        {
-            throw new FlagException(
-                    "end of timepoint flag already exists!");
-        }
         int writeValue = ( (1 << GSConstants.eog.intValue()) | value);
 
         // do not use 'appendValue'
@@ -187,6 +184,7 @@ public class GSBuffer {
         TPtoPosMap.put(tpsWritten, 4*valsWritten);
         activeChans.clear();
         activeChans.add(-1);
+        newValueAddedInCurrentTP = false;
     }
 
     /**
@@ -269,9 +267,18 @@ public class GSBuffer {
      * get total timepoints written
      * @return integer tps written
      */
-    public int getNumTP()
+    public int getNumTPWritten()
     {
         return tpsWritten;
+    }
+
+    /**
+     * get total timepoints possible
+     * @return integer tps written
+     */
+    public int getNumTP()
+    {
+        return maxSizeInBytes / (64 * 4);
     }
 
     /**

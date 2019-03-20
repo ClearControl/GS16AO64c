@@ -12,34 +12,23 @@ public class GSSplitterBuffer
 {
     public List<GSBuffer> mData;
     private int mCurrentBufferIndex;
-    private int mMaxChan;
-    private int mMaxTP;
-    private int mMaxTPPerGSBuffer;
 
-    public GSSplitterBuffer(int maxTP, int maxChan) throws BufferTooLargeException, BoardInitializeException
+    public GSSplitterBuffer(int maxTP) throws BufferTooLargeException, BoardInitializeException
     {
-        // digest parameters
-        this.mMaxTP = maxTP;
-        this.mMaxChan = maxChan;
-
-        // Initialize the list
+        // Initialize everything
         this.mData = new ArrayList<>(); // Should be ArrayList as we do add and get where both O(1) with ArrayList
         mCurrentBufferIndex = 0;
 
-        mMaxTPPerGSBuffer = (int)Math.floor(65536.0 / mMaxChan);
-        int totalTP = mMaxTP;
+        for (int i = 0; i < Math.floor(maxTP/2999); i++)
+            this.mData.add(new GSBuffer(2999));
 
-        while (totalTP > 0) {
-            this.mData.add(new GSBuffer(mMaxTPPerGSBuffer, mMaxChan));
-            totalTP -= mMaxTPPerGSBuffer;
-        }
-        this.mData.add(new GSBuffer(mMaxTPPerGSBuffer, mMaxChan));
+        this.mData.add(new GSBuffer(maxTP%2999));
     }
 
     public void appendValue(double value, int i)
     {
-        int totalValsWritten = this.mData.get(mCurrentBufferIndex).getValsWritten();
-        if (totalValsWritten == mMaxTPPerGSBuffer * mMaxChan)
+        GSBuffer lCurrentBuffer = this.mData.get(mCurrentBufferIndex);
+        if (lCurrentBuffer.getValsWritten() * 4 == lCurrentBuffer.getMaxSizeInBytes())
             mCurrentBufferIndex++;
 
         try {
@@ -51,11 +40,7 @@ public class GSSplitterBuffer
 
     public void appendEndofTP()
     {
-        try {
             this.mData.get(mCurrentBufferIndex).appendEndofTP();
-        } catch (FlagException e) {
-            e.printStackTrace();
-        }
     }
 
     public void appendEndofFunction()

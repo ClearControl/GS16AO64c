@@ -30,8 +30,8 @@ public class GSSplitterBufferTests
     void GSSplitterBuffer_testConstructor()
     {
         try {
-            bufferTest2 = new GSSplitterBuffer(4097,16);
-            assertEquals(3, bufferTest2.mData.size());
+            bufferTest2 = new GSSplitterBuffer(4097);
+            assertEquals(2, bufferTest2.mData.size());
         } catch (Exception ex) {
             fail(ex);
         }
@@ -43,7 +43,7 @@ public class GSSplitterBufferTests
     {
         try {
             sequencerTest = new GSSequencer(65536*2, 4096 * 2);
-            bufferTest1 = new GSSplitterBuffer(4096 * 20, 16);
+            bufferTest1 = new GSSplitterBuffer(4096 * 20);
         } catch (DriverBindingsException lnk) {
             System.out.println("test skipped: "+lnk.getMessage());
             return;
