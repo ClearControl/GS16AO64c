@@ -159,9 +159,9 @@ public class GSSequencerTests {
     void GSSequencer_testPreFillRange_nullBuffers()
     {
         try {
-            sequencerTest = new GSSequencer(65536*2, 40000);
-            bufferTest1 = new GSBuffer(4096);
-            bufferTest2 = new GSBuffer(4096);
+            sequencerTest = new GSSequencer(1, 40000);
+            bufferTest1 = new GSBuffer(1000);
+            bufferTest2 = new GSBuffer(2999);
         } catch (DriverBindingsException lnk) {
             System.out.println("test skipped: "+lnk.getMessage());
             return;
@@ -169,8 +169,8 @@ public class GSSequencerTests {
             fail(ex);
         }
 
-        continuousStepFunction(bufferTest1, 4096);
-        continuousStepFunction(bufferTest2, 4096);
+        continuousStepFunction(bufferTest1, 1000);
+        continuousStepFunction(bufferTest2, 2999);
 
         arrayData = new ArrayDeque<>();
 
@@ -261,7 +261,7 @@ public class GSSequencerTests {
             for (int loop = 0; loop < numTP; loop++) {
                 if (loop % 2 == 0) {
                     try {
-                        for (int i = 0; i < 16; i++) {
+                        for (int i = 0; i < 64; i++) {
                             data.appendValue(0, i);
                         }
                         data.appendEndofTP();
@@ -270,7 +270,7 @@ public class GSSequencerTests {
                     }
                 } else {
                     try {
-                        for (int i = 0; i < 16; i++) {
+                        for (int i = 0; i < 64; i++) {
                             data.appendValue(-1, i);
                         }
                         data.appendEndofTP();
@@ -296,7 +296,7 @@ public class GSSequencerTests {
         try {
             for (int loop = 0; loop < numTP; loop++) {
                 for (int i = 0; i<16; i++){
-                    float value = (float) Math.sin(0.01*loop+0.01*i);
+                    float value = (float) Math.sin(Math.toRadians(Math.PI * 4 * loop));
                     data.appendValue(value, i);
                 }
                 data.appendEndofTP();

@@ -56,6 +56,12 @@ public class GSSequencer {
 
 
     /**
+     * IMPORTANT: Choosing numThresholdValues minimum is wise. As given: new GSSequencer(1, 40000)
+     * The reason behind this suggestion is that GS card has a buffer threshold flag which goes low
+     * when number of elements on its buffer goes below the numThresholdValues. Have tried to set that
+     * flag high manually but was not successful. Hence suggested use requires minimum possible value
+     * of numThresholdValues for the construction of GSSequencer.
+     *
      * constructor establishes communication with board
      * Must execute in order:
      *  1) Find Boards
